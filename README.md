@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/478573ac-75e6-4b11-bc4a-de01cbb70d9d/deploy-status)](https://app.netlify.com/sites/tajemniktv/deploys)
+
 # Astro Starter Kit: Basics
 
 ```sh
