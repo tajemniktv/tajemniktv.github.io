@@ -1,0 +1,164 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Sidebar from "../../components/Sidebar.astro";
+import PostCard from "../../components/cards/PostCard.astro";
+import MobileHeader from "../../components/MobileHeader.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("writing"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
+---
+
+<BaseLayout title="Writing | TajemnikTV">
+  <div class="flex min-h-screen w-full relative">
+    <Sidebar />
+
+    <main
+      class="flex-1 lg:ml-36 px-6 py-8 lg:pr-12 w-full max-w-[1200px] mx-auto flex flex-col"
+    >
+      <MobileHeader />
+
+      <header class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">
+          Writing
+        </h1>
+        <p class="text-lg text-gray-300 max-w-2xl">
+          Thoughts on psychology, technology, and the spaces in between. Usually
+          drafted at 2 AM.
+        </p>
+      </header>
+
+      <!-- Search & Filter (Client-side) -->
+      <div
+        class="mb-8 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between"
+      >
+        <div class="relative w-full md:w-64">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search posts..."
+            class="w-full bg-surface-dark border border-white/10 rounded-full px-4 py-2 text-sm text-white focus:outline-none focus:border-primary/50 transition-colors pl-10"
+          />
+          <span
+            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"
+            >search</span
+          >
+        </div>
+        <div class="flex flex-wrap gap-2" id="tags-container">
+          <button
+            class="tag-filter active px-3 py-1 text-xs font-bold rounded-full border border-primary bg-primary text-white transition-all"
+            data-tag="all"
+          >
+            All
+          </button>
+          {
+            tags.map((tag) => (
+              <button
+                class="tag-filter px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-surface-dark text-gray-400 hover:text-white hover:border-primary/50 transition-all"
+                data-tag={tag}
+              >
+                #{tag}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Posts Grid -->
+      <div class="grid grid-cols-1 gap-6" id="posts-grid">
+        {
+          posts.map((post) => (
+            <div
+              data-tags={post.data.tags.join(",")}
+              data-title={post.data.title.toLowerCase()}
+            >
+              <PostCard post={post} />
+            </div>
+          ))
+        }
+      </div>
+
+      <div id="no-results" class="hidden text-center py-12 text-gray-500">
+        <p>No posts found matching your criteria.</p>
+      </div>
+    </main>
+  </div>
+</BaseLayout>
+
+<script>
+  const searchInput = document.getElementById(
+    "search-input",
+  ) as HTMLInputElement;
+  const tagButtons = document.querySelectorAll(".tag-filter");
+  const posts = document.querySelectorAll("#posts-grid > div");
+  const noResults = document.getElementById("no-results");
+
+  let currentTag = "all";
+  let currentSearch = "";
+
+  function filterPosts() {
+    let visibleCount = 0;
+
+    posts.forEach((post) => {
+      const postTags = (post as HTMLElement).dataset.tags?.split(",") || [];
+      const postTitle = (post as HTMLElement).dataset.title || "";
+
+      const matchesTag = currentTag === "all" || postTags.includes(currentTag);
+      const matchesSearch = postTitle.includes(currentSearch.toLowerCase());
+
+      if (matchesTag && matchesSearch) {
+        (post as HTMLElement).style.display = "block";
+        visibleCount++;
+      } else {
+        (post as HTMLElement).style.display = "none";
+      }
+    });
+
+    if (noResults) {
+      noResults.classList.toggle("hidden", visibleCount > 0);
+    }
+  }
+
+  searchInput?.addEventListener("input", (e) => {
+    currentSearch = (e.target as HTMLInputElement).value;
+    filterPosts();
+  });
+
+  tagButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // Update UI
+      tagButtons.forEach((b) => {
+        b.classList.remove(
+          "bg-primary",
+          "text-white",
+          "border-primary",
+          "font-bold",
+        );
+        b.classList.add(
+          "bg-surface-dark",
+          "text-gray-400",
+          "border-white/10",
+          "font-medium",
+        );
+      });
+      btn.classList.add(
+        "bg-primary",
+        "text-white",
+        "border-primary",
+        "font-bold",
+      );
+      btn.classList.remove(
+        "bg-surface-dark",
+        "text-gray-400",
+        "border-white/10",
+        "font-medium",
+      );
+
+      currentTag = (btn as HTMLElement).dataset.tag || "all";
+      filterPosts();
+    });
+  });
+</script>

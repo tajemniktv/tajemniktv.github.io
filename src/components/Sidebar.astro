@@ -1,5 +1,17 @@
 ---
+const { pathname } = Astro.url;
 
+const navItems = [
+  { href: "/", icon: "home", label: "Home" },
+  { href: "/writing", icon: "edit_note", label: "Writing" },
+  { href: "/highlights", icon: "star", label: "Highlights" },
+  { href: "/connect", icon: "link", label: "Connect" },
+];
+
+const isActive = (href: string) => {
+  if (href === "/") return pathname === "/";
+  return pathname.startsWith(href);
+};
 ---
 
 <aside
@@ -7,71 +19,52 @@
 >
   <div class="flex flex-col items-center gap-6 h-full">
     <!-- Logo -->
-    <div
-      class="h-10 w-10 flex items-center justify-center bg-primary rounded-full text-white shadow-lg shadow-primary/40 mb-2"
+    <a
+      href="/"
+      class="h-10 w-10 flex items-center justify-center bg-primary rounded-full text-white shadow-lg shadow-primary/40 mb-2 hover:scale-110 transition-transform"
+      aria-label="TajemnikTV Home"
     >
       <span class="material-symbols-outlined text-xl">bolt</span>
-    </div>
+    </a>
 
     <!-- Nav -->
     <nav class="flex flex-col gap-4 w-full px-2 flex-1 justify-center">
-      <a
-        class="p-3 text-white/60 hover:text-white hover:bg-white/10 rounded-full transition-all group relative flex justify-center"
-        href="#"
-        aria-label="Home"
-      >
-        <span class="material-symbols-outlined text-xl">home</span>
-        <span
-          class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl"
-          >Home</span
-        >
-      </a>
-      <a
-        class="p-3 text-white/60 hover:text-white hover:bg-white/10 rounded-full transition-all group relative flex justify-center"
-        href="#writing"
-        aria-label="Writing"
-      >
-        <span class="material-symbols-outlined text-xl">edit_note</span>
-        <span
-          class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl"
-          >Writing</span
-        >
-      </a>
-      <a
-        class="p-3 text-white/60 hover:text-white hover:bg-white/10 rounded-full transition-all group relative flex justify-center"
-        href="#highlights"
-        aria-label="Highlights"
-      >
-        <span class="material-symbols-outlined text-xl">star</span>
-        <span
-          class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl"
-          >Highlights</span
-        >
-      </a>
-      <a
-        class="p-3 text-white/60 hover:text-white hover:bg-white/10 rounded-full transition-all group relative flex justify-center"
-        href="#links"
-        aria-label="Links"
-      >
-        <span class="material-symbols-outlined text-xl">link</span>
-        <span
-          class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl"
-          >Links</span
-        >
-      </a>
+      {
+        navItems.map(({ href, icon, label }) => {
+          const active = isActive(href);
+          return (
+            <a
+              class:list={[
+                "p-3 rounded-full transition-all group relative flex justify-center",
+                active
+                  ? "text-white bg-white/10 shadow-inner"
+                  : "text-white/60 hover:text-white hover:bg-white/10",
+              ]}
+              href={href}
+              aria-label={label}
+              aria-current={active ? "page" : undefined}
+            >
+              <span class="material-symbols-outlined text-xl">{icon}</span>
+              <span class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl">
+                {label}
+              </span>
+            </a>
+          );
+        })
+      }
     </nav>
 
-    <!-- Bottom Action -->
+    <!-- Bottom Action (RSS?) or removed since Connect is in nav -->
     <div class="mt-auto">
       <a
         class="p-3 text-primary hover:text-white hover:bg-primary rounded-full transition-all group relative flex justify-center"
-        href="#contact"
-        aria-label="Contact"
+        href="/rss.xml"
+        aria-label="RSS Feed"
       >
-        <span class="material-symbols-outlined text-xl">mail</span>
+        <span class="material-symbols-outlined text-xl">rss_feed</span>
         <span
           class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl"
-          >Contact</span
+          >RSS</span
         >
       </a>
     </div>

@@ -1,0 +1,27 @@
+---
+interface Props {
+  text: string;
+  href?: string;
+  active?: boolean;
+}
+
+const { text, href, active = false } = Astro.props;
+
+const baseStyles =
+  "px-3 py-1 text-xs font-medium rounded-full border transition-colors inline-block";
+const activeStyles = "bg-primary text-white border-primary";
+const inactiveStyles =
+  "bg-white/5 text-gray-400 border-white/10 hover:border-primary/50 hover:text-white";
+
+const classes = `${baseStyles} ${active ? activeStyles : inactiveStyles}`;
+---
+
+{
+  href ? (
+    <a href={href} class={classes}>
+      #{text}
+    </a>
+  ) : (
+    <span class={classes}>#{text}</span>
+  )
+}

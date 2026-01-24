@@ -1,44 +1,146 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import MobileHeader from "../components/MobileHeader.astro";
+import GlassCard from "../components/common/GlassCard.astro";
 ---
 
-<BaseLayout title="Colophon - TajemnikTV">
-  <main class="max-w-2xl mx-auto px-6 py-12 text-gray-300">
-    <a
-      href="/"
-      class="inline-flex items-center gap-2 text-primary hover:text-white transition-colors mb-8"
+<BaseLayout title="Colophon | TajemnikTV">
+  <div class="flex min-h-screen w-full relative">
+    <Sidebar />
+
+    <main
+      class="flex-1 lg:ml-36 px-6 py-8 lg:pr-12 w-full max-w-[900px] mx-auto flex flex-col"
     >
-      <span class="material-symbols-outlined">arrow_back</span>
-      Back to Dashboard
-    </a>
+      <MobileHeader />
 
-    <h1 class="text-4xl font-bold text-white mb-8">Colophon</h1>
-
-    <div class="space-y-6">
-      <section>
-        <h2 class="text-xl font-bold text-white mb-2">Typography</h2>
-        <p>
-          Headings use <strong>Spline Sans</strong>, a geometric sans-serif
-          tailored for UI. Body text is set in <strong>Noto Sans</strong> for legibility.
+      <header class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">
+          Colophon
+        </h1>
+        <p class="text-lg text-gray-300 max-w-2xl">
+          About this site, the tech stack, and the design decisions behind it.
         </p>
-      </section>
+      </header>
 
-      <section>
-        <h2 class="text-xl font-bold text-white mb-2">Tech Stack</h2>
-        <ul class="list-disc pl-5 space-y-1">
-          <li><strong>Astro</strong> for static site generation</li>
-          <li><strong>Tailwind CSS</strong> for styling</li>
-          <li><strong>GitHub Pages</strong> for hosting</li>
-        </ul>
-      </section>
+      <div class="grid grid-cols-1 gap-8">
+        <GlassCard class="p-8">
+          <h2 class="text-2xl font-bold text-white mb-6">Tech Stack</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div class="flex flex-col gap-2">
+              <span
+                class="text-xs font-bold uppercase tracking-wider text-gray-500"
+                >Core</span
+              >
+              <a
+                href="https://astro.build"
+                target="_blank"
+                class="text-lg font-bold text-white hover:text-primary transition-colors"
+                >Astro</a
+              >
+              <span class="text-sm text-gray-400">Static Site Generator</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <span
+                class="text-xs font-bold uppercase tracking-wider text-gray-500"
+                >Styling</span
+              >
+              <a
+                href="https://tailwindcss.com"
+                target="_blank"
+                class="text-lg font-bold text-white hover:text-primary transition-colors"
+                >Tailwind CSS</a
+              >
+              <span class="text-sm text-gray-400">Utility-first CSS</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <span
+                class="text-xs font-bold uppercase tracking-wider text-gray-500"
+                >Hosting</span
+              >
+              <a
+                href="https://pages.github.com"
+                target="_blank"
+                class="text-lg font-bold text-white hover:text-primary transition-colors"
+                >GitHub Pages</a
+              >
+              <span class="text-sm text-gray-400">Static Hosting</span>
+            </div>
+          </div>
+        </GlassCard>
 
-      <section>
-        <h2 class="text-xl font-bold text-white mb-2">Design</h2>
-        <p>
-          The "Personal Home Dashboard" concept features a modular bento-grid
-          layout, dark glassmorphism aesthetics, and purple accents (#7f13ec).
-        </p>
-      </section>
-    </div>
-  </main>
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-6">Design System</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <GlassCard class="p-6">
+              <h3 class="text-lg font-bold text-white mb-4">Typography</h3>
+              <div class="flex flex-col gap-4">
+                <div>
+                  <p class="font-display text-3xl text-white mb-1">
+                    Spline Sans
+                  </p>
+                  <p class="text-xs text-gray-500">Headings & Display</p>
+                </div>
+                <div>
+                  <p class="font-body text-xl text-gray-300 mb-1">Noto Sans</p>
+                  <p class="text-xs text-gray-500">Body Copy</p>
+                </div>
+              </div>
+            </GlassCard>
+
+            <GlassCard class="p-6">
+              <h3 class="text-lg font-bold text-white mb-4">Colors</h3>
+              <div class="flex flex-col gap-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-lg shadow-lg bg-[#7f13ec]">
+                  </div>
+                  <div>
+                    <p class="text-white font-mono text-sm">#7f13ec</p>
+                    <p class="text-xs text-gray-500">Primary Purple</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-12 h-12 rounded-lg shadow-lg bg-[#130b1a] border border-white/10"
+                  >
+                  </div>
+                  <div>
+                    <p class="text-white font-mono text-sm">#130b1a</p>
+                    <p class="text-xs text-gray-500">Background Dark</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-12 h-12 rounded-lg shadow-lg bg-[#1f1429] border border-white/10"
+                  >
+                  </div>
+                  <div>
+                    <p class="text-white font-mono text-sm">#1f1429</p>
+                    <p class="text-xs text-gray-500">Surface Dark</p>
+                  </div>
+                </div>
+              </div>
+            </GlassCard>
+          </div>
+        </section>
+
+        <section class="max-w-prose">
+          <h2 class="text-2xl font-bold text-white mb-4">
+            Why this aesthetic?
+          </h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            I believe personal spaces on the web should feel... personal. Not
+            corporate, not purely functional, but expressive.
+          </p>
+          <p class="text-gray-300 leading-relaxed">
+            The dark glassmorphism style reflects my late-night coding sessions
+            and my love for game UIs (like <em>Destiny 2</em> or <em
+              >Star Citizen</em
+            >). It's built to be comfortable for reading in the dark, with just
+            enough glow to feel alive.
+          </p>
+        </section>
+      </div>
+    </main>
+  </div>
 </BaseLayout>

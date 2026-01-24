@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"writing">;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, tags, heroImage } = post.data;
+
+const formattedDate = pubDate.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
+---
+
+<a
+  href={`/writing/${post.slug}`}
+  class="group relative block bg-surface-dark border border-white/5 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:scale-[1.01] hover:shadow-xl hover:shadow-primary/10"
+>
+  <div class="flex flex-col md:flex-row h-full">
+    {
+      heroImage && (
+        <div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden">
+          <img
+            src={heroImage}
+            alt={title}
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div class="absolute inset-0 bg-primary/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity" />
+        </div>
+      )
+    }
+    <div class="flex-1 p-6 flex flex-col justify-center">
+      <div class="flex gap-2 mb-3">
+        {
+          tags
+            .slice(0, 3)
+            .map((tag) => (
+              <span class="text-[10px] uppercase tracking-wider font-bold text-primary/80 bg-primary/10 px-2 py-1 rounded-md">
+                #{tag}
+              </span>
+            ))
+        }
+      </div>
+      <h3
+        class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors"
+      >
+        {title}
+      </h3>
+      <p class="text-gray-400 text-sm line-clamp-2 md:line-clamp-3 mb-4">
+        {description}
+      </p>
+      <div class="mt-auto flex items-center gap-4 text-xs text-secondary-text">
+        <span class="text-gray-500">{formattedDate}</span>
+      </div>
+    </div>
+  </div>
+</a>

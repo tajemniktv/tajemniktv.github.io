@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import MobileHeader from "../components/MobileHeader.astro";
+import GlassCard from "../components/common/GlassCard.astro";
+import ReadingCard from "../components/cards/ReadingCard.astro";
+import { siteData } from "../data/site";
+
+const { highlights, reading, status, currentActivity } = siteData;
+---
+
+<BaseLayout title="Highlights | TajemnikTV">
+  <div class="flex min-h-screen w-full relative">
+    <Sidebar />
+
+    <main
+      class="flex-1 lg:ml-36 px-6 py-8 lg:pr-12 w-full max-w-[1200px] mx-auto flex flex-col"
+    >
+      <MobileHeader />
+
+      <header class="mb-12">
+        <div class="flex items-center gap-3 mb-4">
+          <div
+            class="bg-surface-light border border-white/10 px-3 py-1 rounded-full flex items-center gap-2 w-fit"
+          >
+            <span
+              class={`w-2 h-2 rounded-full ${status.text === "Online" ? "bg-green-400" : "bg-amber-400"} animate-pulse`}
+            ></span>
+            <span
+              class="text-xs font-bold text-gray-300 uppercase tracking-wide"
+              >{currentActivity}</span
+            >
+          </div>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">
+          Highlights
+        </h1>
+        <p class="text-lg text-gray-300 max-w-2xl">
+          A collection of my interests, obsessions, and current projects.
+        </p>
+      </header>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Main Interest Areas -->
+        {
+          highlights.map((item) => (
+            <GlassCard class="p-6 flex flex-col gap-4 group" hoverEffect={true}>
+              <div class="w-12 h-12 rounded-2xl bg-primary/20 text-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <span class="material-symbols-outlined text-3xl">
+                  {item.icon}
+                </span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white mb-2">{item.title}</h3>
+                <p class="text-sm text-gray-300 mb-4">{item.description}</p>
+                <a
+                  href={item.href}
+                  class="text-xs font-bold uppercase tracking-wider text-primary hover:text-white transition-colors flex items-center gap-1"
+                >
+                  Explore{" "}
+                  <span class="material-symbols-outlined text-sm">
+                    arrow_forward
+                  </span>
+                </a>
+              </div>
+            </GlassCard>
+          ))
+        }
+
+        <!-- Currently Reading (Reusing component) -->
+        <ReadingCard {...reading} />
+
+        <!-- Detailed Blocks (Example) -->
+        <GlassCard class="col-span-1 md:col-span-2 lg:col-span-2 p-6 md:p-8">
+          <div class="flex items-start gap-4 mb-4">
+            <span class="material-symbols-outlined text-3xl text-accent-purple"
+              >psychology</span
+            >
+            <div>
+              <h3 class="text-2xl font-bold text-white mb-2">
+                Psychometrics & Systems
+              </h3>
+              <p class="text-gray-300 leading-relaxed mb-4">
+                I study how we measure the mind, and how those measurements fit
+                into larger systems. This overlaps heavily with my interest in
+                game design—managing stats, optimizing builds, and understanding
+                the feedback loops that keep us engaged.
+              </p>
+              <p class="text-gray-300 leading-relaxed">
+                Currently working on a thesis related to attention span in
+                digital environments.
+              </p>
+            </div>
+          </div>
+        </GlassCard>
+      </div>
+    </main>
+  </div>
+</BaseLayout>

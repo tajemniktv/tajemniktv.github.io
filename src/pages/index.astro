@@ -9,8 +9,27 @@ import LatestEssayCard from "../components/cards/LatestEssayCard.astro";
 import ElsewhereCard from "../components/cards/ElsewhereCard.astro";
 import Footer from "../components/Footer.astro";
 import { dashboardData } from "../data/dashboard";
+import { getCollection } from "astro:content";
 
-const { hero, pillars, reading, latestEssay, elsewhere } = dashboardData;
+const posts = (await getCollection("writing"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const latestPost = posts[0];
+
+// Merge dynamic data with dashboard defaults
+const { hero, pillars, reading, elsewhere } = dashboardData;
+const latestEssayData = latestPost
+  ? {
+      title: latestPost.data.title,
+      excerpt: latestPost.data.description,
+      readTime:
+        Math.ceil(latestPost.body.split(/\s+/).length / 200) + " min read",
+      coverUrl:
+        latestPost.data.heroImage || "/images/essay-cover-placeholder.png",
+      slug: latestPost.slug,
+    }
+  : dashboardData.latestEssay;
 ---
 
 <BaseLayout title="TajemnikTV - Personal Home Dashboard">
@@ -40,7 +59,9 @@ const { hero, pillars, reading, latestEssay, elsewhere } = dashboardData;
 
         <!-- Latest Essay (Writing) -->
         <div id="writing" class="contents">
-          <LatestEssayCard {...latestEssay} />
+          <a href={latestPost ? `/writing/${latestPost.slug}` : "/writing"}>
+            <LatestEssayCard {...latestEssayData} />
+          </a>
         </div>
 
         <!-- Elsewhere / Socials (Links) -->

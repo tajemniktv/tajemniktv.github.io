@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import MobileHeader from "../components/MobileHeader.astro";
+import GlassCard from "../components/common/GlassCard.astro";
+---
+
+<BaseLayout title="Privacy Policy | TajemnikTV">
+  <div class="flex min-h-screen w-full relative">
+    <Sidebar />
+
+    <main
+      class="flex-1 lg:ml-36 px-6 py-8 lg:pr-12 w-full max-w-[900px] mx-auto flex flex-col"
+    >
+      <MobileHeader />
+
+      <header class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">
+          Privacy Policy
+        </h1>
+      </header>
+
+      <GlassCard class="p-8">
+        <div class="prose prose-invert prose-lg max-w-none">
+          <p>I believe in privacy by default.</p>
+          <h3>Collection of Data</h3>
+          <p>
+            This site is a static site hosted on GitHub Pages. I do not
+            personally collect or store any personal data from visitors.
+          </p>
+          <p>
+            However, GitHub may collect access logs containing IP addresses as
+            part of their standard server operations. You can read GitHub's
+            Privacy Statement for more details.
+          </p>
+          <h3>Cookies</h3>
+          <p>
+            This site does not use cookies for tracking or analytics. Local
+            storage might be used for retaining UI preferences (like potential
+            future theme toggles), but that data never leaves your device.
+          </p>
+          <h3>Contact</h3>
+          <p>
+            If you have questions, feel free to reach out via the contact
+            methods listed on the Connect page.
+          </p>
+        </div>
+      </GlassCard>
+    </main>
+  </div>
+</BaseLayout>

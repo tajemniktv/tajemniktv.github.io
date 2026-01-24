@@ -1,0 +1,89 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import MobileHeader from "../components/MobileHeader.astro";
+import GlassCard from "../components/common/GlassCard.astro";
+import ElsewhereCard from "../components/cards/ElsewhereCard.astro";
+import { siteData } from "../data/site";
+
+const { socials, bio } = siteData;
+---
+
+<BaseLayout title="Connect | TajemnikTV">
+  <div class="flex min-h-screen w-full relative">
+    <Sidebar />
+
+    <main
+      class="flex-1 lg:ml-36 px-6 py-8 lg:pr-12 w-full max-w-[1000px] mx-auto flex flex-col"
+    >
+      <MobileHeader />
+
+      <header class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">
+          Connect
+        </h1>
+        <p class="text-lg text-gray-300 max-w-2xl">
+          Start a conversation, collaborate on a mod, or just say hi.
+        </p>
+      </header>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- About / Contact Info -->
+        <GlassCard class="p-8 flex flex-col justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-white mb-4">Let's Talk</h2>
+            <p class="text-gray-300 mb-6 leading-relaxed">
+              I'm always open to talking about weird ideas, psychology, modding,
+              retro-tech, or whatever you're currently obsessed with.
+            </p>
+            <p class="text-gray-300 mb-8 leading-relaxed">
+              {bio}
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-4">
+            <a
+              href="mailto:contact@example.com"
+              class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] shadow-lg shadow-primary/25"
+            >
+              <span class="material-symbols-outlined">mail</span>
+              Email Me
+            </a>
+            <button
+              onclick="navigator.clipboard.writeText('contact@example.com').then(() => alert('Copied to clipboard!'))"
+              class="bg-surface-light hover:bg-white/10 text-white border border-white/10 font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-colors"
+            >
+              <span class="material-symbols-outlined">content_copy</span>
+              Copy Email
+            </button>
+          </div>
+        </GlassCard>
+
+        <!-- Socials -->
+        <div class="flex flex-col gap-6">
+          <ElsewhereCard links={socials} />
+
+          <GlassCard
+            class="p-6 bg-gradient-to-br from-indigo-900/40 to-purple-900/40 border-indigo-500/20"
+          >
+            <h3
+              class="text-xl font-bold text-white mb-2 flex items-center gap-2"
+            >
+              <span class="material-symbols-outlined">handshake</span>
+              Collaboration
+            </h3>
+            <p class="text-sm text-gray-300 mb-4">
+              Open to collaboration on open-source tools, game UI mods, or
+              research projects.
+            </p>
+            <div
+              class="flex items-center gap-2 text-xs font-bold text-indigo-300 uppercase tracking-widest"
+            >
+              Status: <span class="text-green-400">Open</span>
+            </div>
+          </GlassCard>
+        </div>
+      </div>
+    </main>
+  </div>
+</BaseLayout>
