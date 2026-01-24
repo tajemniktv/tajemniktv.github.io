@@ -1,0 +1,77 @@
+---
+interface Props {
+  status: string;
+  heading: string;
+  bio: string;
+  primaryCta: string;
+  secondaryCta: string;
+}
+
+const { status, heading, bio, primaryCta, secondaryCta } = Astro.props;
+---
+
+<div
+  class="col-span-1 md:col-span-2 lg:col-span-2 row-span-2 relative group overflow-hidden rounded-2xl bg-surface-dark p-8 flex flex-col justify-between min-h-[400px]"
+>
+  <!-- Background Blur Effect -->
+  <div
+    class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none"
+  >
+  </div>
+
+  <div class="relative z-10">
+    <div class="flex items-start justify-between mb-6">
+      <div
+        class="w-24 h-24 rounded-full border-4 border-surface-light overflow-hidden shadow-xl"
+      >
+        <!-- Placeholder Avatar -->
+        <img
+          class="w-full h-full object-cover"
+          src="/images/avatar-placeholder.png"
+          alt="Portrait of Grzegorz"
+        />
+      </div>
+      <div
+        class="px-4 py-2 bg-white/5 rounded-full border border-white/10 backdrop-blur-sm"
+      >
+        <span
+          class="text-xs font-bold text-amber-400 flex items-center gap-2 uppercase tracking-wide"
+        >
+          <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+          {status}
+        </span>
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <span class="text-primary font-bold tracking-wider text-sm uppercase"
+        >TajemnikTV</span
+      >
+    </div>
+
+    <h1
+      class="text-4xl md:text-5xl font-bold mb-4 gradient-text tracking-tight"
+    >
+      {heading}
+    </h1>
+
+    <p class="text-lg text-gray-300 leading-relaxed max-w-md font-medium">
+      {bio}
+    </p>
+  </div>
+
+  <div class="mt-8 flex flex-wrap gap-3 relative z-10">
+    <button
+      class="px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-full font-bold text-sm transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2 shadow-lg shadow-primary/30"
+    >
+      <span class="material-symbols-outlined text-[20px]">explore</span>
+      {primaryCta}
+    </button>
+    <button
+      class="px-6 py-3 bg-transparent hover:bg-white/5 text-white border border-white/20 rounded-full font-semibold text-sm transition-all flex items-center gap-2"
+    >
+      <span class="material-symbols-outlined text-[20px]">waving_hand</span>
+      {secondaryCta}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Colophon - TajemnikTV">
+  <main class="max-w-2xl mx-auto px-6 py-12 text-gray-300">
+    <a
+      href="/"
+      class="inline-flex items-center gap-2 text-primary hover:text-white transition-colors mb-8"
+    >
+      <span class="material-symbols-outlined">arrow_back</span>
+      Back to Dashboard
+    </a>
+
+    <h1 class="text-4xl font-bold text-white mb-8">Colophon</h1>
+
+    <div class="space-y-6">
+      <section>
+        <h2 class="text-xl font-bold text-white mb-2">Typography</h2>
+        <p>
+          Headings use <strong>Spline Sans</strong>, a geometric sans-serif
+          tailored for UI. Body text is set in <strong>Noto Sans</strong> for legibility.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-2">Tech Stack</h2>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>Astro</strong> for static site generation</li>
+          <li><strong>Tailwind CSS</strong> for styling</li>
+          <li><strong>GitHub Pages</strong> for hosting</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-2">Design</h2>
+        <p>
+          The "Personal Home Dashboard" concept features a modular bento-grid
+          layout, dark glassmorphism aesthetics, and purple accents (#7f13ec).
+        </p>
+      </section>
+    </div>
+  </main>
+</BaseLayout>
