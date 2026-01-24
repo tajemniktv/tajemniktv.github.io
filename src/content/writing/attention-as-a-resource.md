@@ -4,7 +4,7 @@ description: "Designing life like a UI to manage dopamine loops."
 pubDate: "2026-01-10"
 tags: ["reflection", "psychology", "design"]
 featured: true
-draft: false
+draft: true
 heroImage: "/images/essay-cover-placeholder.png"
 ---
 
