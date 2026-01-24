@@ -5,8 +5,9 @@ import MobileHeader from "../components/MobileHeader.astro";
 import GlassCard from "../components/common/GlassCard.astro";
 import ReadingCard from "../components/cards/ReadingCard.astro";
 import { siteData } from "../data/site";
+import { highlightsData } from "../data/highlights";
 
-const { highlights, reading, status, currentActivity } = siteData;
+const { reading, status, currentActivity } = siteData;
 ---
 
 <BaseLayout title="Highlights | TajemnikTV">
@@ -43,7 +44,7 @@ const { highlights, reading, status, currentActivity } = siteData;
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Main Interest Areas -->
         {
-          highlights.map((item) => (
+          highlightsData.map((item) => (
             <GlassCard class="p-6 flex flex-col gap-4 group" hoverEffect={true}>
               <div class="w-12 h-12 rounded-2xl bg-primary/20 text-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <span class="material-symbols-outlined text-3xl">
@@ -54,7 +55,7 @@ const { highlights, reading, status, currentActivity } = siteData;
                 <h3 class="text-xl font-bold text-white mb-2">{item.title}</h3>
                 <p class="text-sm text-gray-300 mb-4">{item.description}</p>
                 <a
-                  href={item.href}
+                  href={`/highlights/${item.slug}`}
                   class="text-xs font-bold uppercase tracking-wider text-primary hover:text-white transition-colors flex items-center gap-1"
                 >
                   Explore{" "}

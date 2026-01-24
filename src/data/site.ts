@@ -39,31 +39,31 @@ export const siteData = {
       title: "Psychology",
       description: "Student of human mind & behaviors.",
       icon: "psychology",
-      href: "/highlights#psychology"
+      href: "/highlights/psychology"
     },
     {
       title: "Modding",
       description: "QoL mods, UI/UX performance.",
       icon: "construction",
-      href: "/highlights#modding"
+      href: "/highlights/modding"
     },
     {
       title: "Music",
       description: "Playlists and mood-curation.",
       icon: "headphones",
-      href: "/highlights#music"
+      href: "/highlights/music"
     },
     {
       title: "Reading",
       description: "Book notes and thoughts.",
       icon: "menu_book",
-      href: "/highlights#reading"
+      href: "/highlights/reading"
     },
     {
       title: "Open Source",
       description: "Contributing to the ecosystem.",
       icon: "code",
-      href: "/highlights#opensource"
+      href: "/highlights/opensource"
     }
   ],
   reading: {
