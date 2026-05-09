@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
-    "@astrojs/rss": "^4.0.15",
+    "@astrojs/rss": "^4.0.18",
     "@astrojs/tailwind": "^6.0.2",
     "@stackbit/types": "^2.1.15",
     "@tailwindcss/typography": "^0.5.19",
