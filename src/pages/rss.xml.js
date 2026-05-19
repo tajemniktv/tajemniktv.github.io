@@ -15,9 +15,7 @@ export async function GET(context) {
       title: post.data.title,
       pubDate: post.data.pubDate,
       description: post.data.description,
-      // Compute RSS link from post `slug`
-      // This example assumes all posts are rendered as `/writing/[slug]` routes
-      link: `/writing/${post.slug}/`,
+      link: `/writing/${post.id.replace(/\.md$/, "")}/`,
     })),
     // (optional) inject custom xml
     customData: `<language>en-us</language>`,
