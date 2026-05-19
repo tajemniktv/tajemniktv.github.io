@@ -24,10 +24,11 @@ const latestEssayData = latestPost
       title: latestPost.data.title,
       excerpt: latestPost.data.description,
       readTime:
-        Math.ceil(latestPost.body.split(/\s+/).length / 200) + " min read",
+        Math.ceil((latestPost.body ?? "").split(/\s+/).length / 200) +
+        " min read",
       coverUrl:
         latestPost.data.heroImage || "/images/essay-cover-placeholder.png",
-      slug: latestPost.slug,
+      slug: latestPost.id.replace(/\.md$/, ""),
     }
   : dashboardData.latestEssay;
 ---
@@ -59,7 +60,9 @@ const latestEssayData = latestPost
 
         <!-- Latest Essay (Writing) -->
         <div id="writing" class="contents">
-          <a href={latestPost ? `/writing/${latestPost.slug}` : "/writing"}>
+          <a
+            href={latestPost ? `/writing/${latestPost.id.replace(/\.md$/, "")}` : "/writing"}
+          >
             <LatestEssayCard {...latestEssayData} />
           </a>
         </div>
