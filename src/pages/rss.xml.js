@@ -17,7 +17,7 @@ export async function GET(context) {
 			title: post.data.title,
 			pubDate: post.data.pubDate,
 			description: post.data.description,
-			link: `/lab/${post.id.replace(/\.md$/, "")}/`,
+			link: `/lab/${post.id.replace(/\.md$/, "")}`,
 		})),
 		// (optional) inject custom xml
 		customData: `<language>en-us</language>`,
