@@ -1,11 +1,13 @@
-import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
+/** @format */
+
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://tajemniktv.github.io',
-  base: '/', // Update base to repo name if deploying under /REPO/ e.g. '/my-repo'
-  vite: {
-    plugins: [tailwindcss()]
-  }
+	site: "https://tajemniktv.github.io",
+	base: "/",
+	vite: {
+		plugins: [tailwindcss()],
+	},
 });

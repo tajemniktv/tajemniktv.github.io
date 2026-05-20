@@ -1,35 +1,55 @@
 ---
 interface Props {
-  title: string;
-  author: string;
-  progress: number;
-  coverUrl: string;
+	title: string;
+	description: string;
+	items: string[];
 }
 
-const { title, author, progress, coverUrl } = Astro.props;
+const { title, description, items } = Astro.props;
 ---
 
-<div
-  class="col-span-1 bg-[#1a1122] p-0 rounded-2xl border border-white/5 overflow-hidden flex flex-col"
+<section
+	class="col-span-1 md:col-span-2 bg-[#191021] p-6 rounded-2xl border border-white/10 overflow-hidden flex flex-col relative"
 >
-  <div
-    class="h-28 bg-cover bg-center"
-    style={`background-image: url('${coverUrl}');`}
-  >
-  </div>
-  <div class="p-5 flex-1 flex flex-col justify-center">
-    <div
-      class="flex items-center gap-2 text-xs text-primary font-bold uppercase tracking-wider mb-1"
-    >
-      <span class="material-symbols-outlined text-sm">menu_book</span>
-      Reading
-    </div>
-    <h4 class="text-white font-bold text-lg leading-tight">{title}</h4>
-    <p class="text-gray-400 text-xs mt-1">{author}</p>
+	<div
+		class="absolute -right-12 -top-16 h-44 w-44 rounded-full bg-cyan-400/10 blur-3xl"
+		aria-hidden="true"
+	>
+	</div>
+	<div class="relative z-10">
+		<div class="flex items-center justify-between gap-4 mb-5">
+			<div>
+				<p
+					class="flex items-center gap-2 text-xs text-cyan-200 font-bold uppercase tracking-[0.18em] mb-2"
+				>
+					<span class="material-symbols-outlined text-base">travel_explore</span
+					>
+					Input Queue
+				</p>
+				<h3 class="text-2xl font-bold text-white leading-tight">{title}</h3>
+			</div>
+			<div
+				class="h-10 w-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-cyan-200"
+			>
+				<span class="material-symbols-outlined">radar</span>
+			</div>
+		</div>
 
-    <!-- Progress Bar -->
-    <div class="w-full bg-white/10 h-1 mt-3 rounded-full overflow-hidden">
-      <div class="bg-primary h-full" style={`width: ${progress}%`}></div>
-    </div>
-  </div>
-</div>
+		<p class="text-sm text-gray-300 leading-relaxed mb-5 max-w-2xl">
+			{description}
+		</p>
+
+		<ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+			{
+				items.map((item) => (
+					<li class="flex items-start gap-2 rounded-xl border border-white/5 bg-white/4 px-3 py-2 text-sm text-gray-200">
+						<span class="material-symbols-outlined text-primary text-base mt-0.5">
+							chevron_right
+						</span>
+						<span>{item}</span>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>

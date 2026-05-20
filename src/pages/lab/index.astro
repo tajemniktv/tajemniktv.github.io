@@ -1,0 +1,188 @@
+---
+import { getCollection } from "astro:content";
+import PostCard from "../../components/cards/PostCard.astro";
+import GlassCard from "../../components/common/GlassCard.astro";
+import MobileHeader from "../../components/MobileHeader.astro";
+import Sidebar from "../../components/Sidebar.astro";
+import { dashboardData } from "../../data/dashboard";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const notes = (await getCollection("lab"))
+	.filter((post) => !post.data.draft)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const tags = [...new Set(notes.flatMap((post) => post.data.tags))];
+const { lab } = dashboardData;
+---
+
+<BaseLayout title="Lab Notes | TajemnikTV">
+	<div class="flex min-h-screen w-full relative">
+		<Sidebar />
+
+		<main
+			class="flex-1 lg:ml-36 px-6 py-8 lg:pr-12 w-full max-w-275 mx-auto flex flex-col"
+		>
+			<MobileHeader />
+
+			<header class="mb-10">
+				<p
+					class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3"
+				>
+					TajemnikTV research-ish terminal
+				</p>
+				<h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">
+					Lab Notes
+				</h1>
+				<p class="text-lg text-gray-300 max-w-3xl leading-relaxed">
+					Experiments, project notes, rabbit holes, and thoughts that are useful
+					enough to escape the private notes folder. This is not pretending to
+					be a formal blog.
+				</p>
+			</header>
+
+			{
+				notes.length > 0 ?
+					<>
+						<div class="mb-8 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+							<div class="relative w-full md:w-72">
+								<input
+									type="text"
+									id="search-input"
+									aria-label="Search lab notes"
+									placeholder="Search lab notes..."
+									class="w-full bg-surface-dark border border-white/10 rounded-full px-4 py-2 text-sm text-white focus:outline-none focus:border-primary/50 transition-colors pl-10"
+								/>
+								<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">
+									search
+								</span>
+							</div>
+							<div class="flex flex-wrap gap-2" id="tags-container">
+								<button
+									class="tag-filter active px-3 py-1 text-xs font-bold rounded-full border border-primary bg-primary text-white transition-all"
+									data-tag="all"
+								>
+									All
+								</button>
+								{tags.map((tag) => (
+									<button
+										class="tag-filter px-3 py-1 text-xs font-medium rounded-full border border-white/10 bg-surface-dark text-gray-400 hover:text-white hover:border-primary/50 transition-all"
+										data-tag={tag}
+									>
+										#{tag}
+									</button>
+								))}
+							</div>
+						</div>
+
+						<div class="grid grid-cols-1 gap-6" id="posts-grid">
+							{notes.map((post) => (
+								<div
+									data-tags={post.data.tags.join(",")}
+									data-title={post.data.title.toLowerCase()}
+								>
+									<PostCard post={post} />
+								</div>
+							))}
+						</div>
+
+						<div id="no-results" class="hidden text-center py-12 text-gray-500">
+							<p>No lab notes match that filter.</p>
+						</div>
+					</>
+				:	<GlassCard class="p-8 md:p-10">
+						<div class="flex flex-col md:flex-row gap-6 md:items-center">
+							<div class="h-16 w-16 rounded-2xl bg-primary/20 text-primary flex items-center justify-center shrink-0">
+								<span class="material-symbols-outlined text-4xl">science</span>
+							</div>
+							<div>
+								<p class="text-xs font-bold uppercase tracking-[0.18em] text-cyan-100/70 mb-2">
+									{lab.status}
+								</p>
+								<h2 class="text-2xl font-bold text-white mb-3">
+									{lab.emptyTitle}
+								</h2>
+								<p class="text-gray-300 leading-relaxed max-w-2xl">
+									{lab.emptyDescription} When something real is ready, it will
+									show up here as a note, experiment log, or project trail.
+								</p>
+							</div>
+						</div>
+					</GlassCard>
+			}
+		</main>
+	</div>
+</BaseLayout>
+
+<script>
+	const searchInput = document.getElementById(
+		"search-input",
+	) as HTMLInputElement | null;
+	const tagButtons = document.querySelectorAll(".tag-filter");
+	const posts = document.querySelectorAll("#posts-grid > div");
+	const noResults = document.getElementById("no-results");
+
+	let currentTag = "all";
+	let currentSearch = searchInput?.value ?? "";
+
+	function filterPosts() {
+		let visibleCount = 0;
+
+		posts.forEach((post) => {
+			const postTags = (post as HTMLElement).dataset.tags?.split(",") || [];
+			const postTitle = (post as HTMLElement).dataset.title || "";
+
+			const matchesTag = currentTag === "all" || postTags.includes(currentTag);
+			const matchesSearch = postTitle.includes(currentSearch.toLowerCase());
+
+			if (matchesTag && matchesSearch) {
+				(post as HTMLElement).style.display = "block";
+				visibleCount++;
+			} else {
+				(post as HTMLElement).style.display = "none";
+			}
+		});
+
+		noResults?.classList.toggle("hidden", visibleCount > 0);
+	}
+
+	searchInput?.addEventListener("input", (event) => {
+		currentSearch = (event.target as HTMLInputElement).value;
+		filterPosts();
+	});
+
+	tagButtons.forEach((button) => {
+		button.addEventListener("click", () => {
+			tagButtons.forEach((tagButton) => {
+				tagButton.classList.remove(
+					"bg-primary",
+					"text-white",
+					"border-primary",
+					"font-bold",
+				);
+				tagButton.classList.add(
+					"bg-surface-dark",
+					"text-gray-400",
+					"border-white/10",
+					"font-medium",
+				);
+			});
+			button.classList.add(
+				"bg-primary",
+				"text-white",
+				"border-primary",
+				"font-bold",
+			);
+			button.classList.remove(
+				"bg-surface-dark",
+				"text-gray-400",
+				"border-white/10",
+				"font-medium",
+			);
+
+			currentTag = (button as HTMLElement).dataset.tag || "all";
+			filterPosts();
+		});
+	});
+
+	filterPosts();
+</script>

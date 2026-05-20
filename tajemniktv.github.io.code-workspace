@@ -4,5 +4,51 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"editor.formatOnSave": true,
+		"editor.codeActionsOnSave": {
+			"source.fixAll.biome": "explicit",
+			"source.organizeImports.biome": "explicit"
+		},
+		"[astro]": {
+			"editor.defaultFormatter": "astro-build.astro-vscode"
+		},
+		"[css]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		},
+		"[tailwindcss]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		},
+		"[markdown]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		},
+		"astro.content-intellisense": true,
+		"astro.typescript": "workspace",
+		"typescript.tsdk": "node_modules/typescript/lib",
+		"js/ts.tsdk.path": "node_modules/typescript/lib",
+		"tailwindCSS.experimental.configFile": "src/styles/global.css",
+		"tailwindCSS.includeLanguages": {
+			"astro": "html"
+		},
+		"prettier.requireConfig": false,
+		"biome.enabled": true,
+		"biome.requireConfiguration": false,
+		"files.associations": {
+			"*.css": "tailwindcss",
+			"*.astro": "astro"
+		},
+		"search.exclude": {
+			"dist": true,
+			".astro": true,
+			"node_modules": true
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			"astro-build.astro-vscode",
+			"biomejs.biome",
+			"esbenp.prettier-vscode",
+			"bradlc.vscode-tailwindcss"
+		]
+	}
 }

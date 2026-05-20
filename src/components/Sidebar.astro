@@ -2,71 +2,71 @@
 const { pathname } = Astro.url;
 
 const navItems = [
-  { href: "/", icon: "home", label: "Home" },
-  { href: "/writing", icon: "edit_note", label: "Writing" },
-  { href: "/highlights", icon: "star", label: "Highlights" },
-  { href: "/connect", icon: "link", label: "Connect" },
+	{ href: "/", icon: "home", label: "Home" },
+	{ href: "/lab", icon: "science", label: "Lab Notes" },
+	{ href: "/highlights", icon: "star", label: "Highlights" },
+	{ href: "/connect", icon: "link", label: "Connect" },
 ];
 
 const isActive = (href: string) => {
-  if (href === "/") return pathname === "/";
-  return pathname.startsWith(href);
+	if (href === "/") return pathname === "/";
+	return pathname.startsWith(href);
 };
 ---
 
 <aside
-  class="hidden lg:flex fixed left-8 top-8 bottom-8 w-20 flex-col items-center glass-card rounded-full py-6 z-50 shadow-[0_0_40px_-10px_rgba(127,19,236,0.3)]"
+	class="hidden lg:flex fixed left-8 top-8 bottom-8 w-20 flex-col items-center glass-card rounded-full py-6 z-50 shadow-[0_0_40px_-10px_rgba(127,19,236,0.3)]"
 >
-  <div class="flex flex-col items-center gap-6 h-full">
-    <!-- Logo -->
-    <a
-      href="/"
-      class="h-10 w-10 flex items-center justify-center bg-primary rounded-full text-white shadow-lg shadow-primary/40 mb-2 hover:scale-110 transition-transform"
-      aria-label="TajemnikTV Home"
-    >
-      <span class="material-symbols-outlined text-xl">bolt</span>
-    </a>
+	<div class="flex flex-col items-center gap-6 h-full">
+		<!-- Logo -->
+		<a
+			href="/"
+			class="h-10 w-10 flex items-center justify-center bg-primary rounded-full text-white shadow-lg shadow-primary/40 mb-2 hover:scale-110 transition-transform"
+			aria-label="TajemnikTV Home"
+		>
+			<span class="material-symbols-outlined text-xl">bolt</span>
+		</a>
 
-    <!-- Nav -->
-    <nav class="flex flex-col gap-4 w-full px-2 flex-1 justify-center">
-      {
-        navItems.map(({ href, icon, label }) => {
-          const active = isActive(href);
-          return (
-            <a
-              class:list={[
-                "p-3 rounded-full transition-all group relative flex justify-center",
-                active
-                  ? "text-white bg-white/10 shadow-inner"
-                  : "text-white/60 hover:text-white hover:bg-white/10",
-              ]}
-              href={href}
-              aria-label={label}
-              aria-current={active ? "page" : undefined}
-            >
-              <span class="material-symbols-outlined text-xl">{icon}</span>
-              <span class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl">
-                {label}
-              </span>
-            </a>
-          );
-        })
-      }
-    </nav>
+		<!-- Nav -->
+		<nav class="flex flex-col gap-4 w-full px-2 flex-1 justify-center">
+			{
+				navItems.map(({ href, icon, label }) => {
+					const active = isActive(href);
+					return (
+						<a
+							class:list={[
+								"p-3 rounded-full transition-all group relative flex justify-center",
+								active ?
+									"text-white bg-white/10 shadow-inner"
+								:	"text-white/60 hover:text-white hover:bg-white/10",
+							]}
+							href={href}
+							aria-label={label}
+							aria-current={active ? "page" : undefined}
+						>
+							<span class="material-symbols-outlined text-xl">{icon}</span>
+							<span class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl">
+								{label}
+							</span>
+						</a>
+					);
+				})
+			}
+		</nav>
 
-    <!-- Bottom Action (RSS?) or removed since Connect is in nav -->
-    <div class="mt-auto">
-      <a
-        class="p-3 text-primary hover:text-white hover:bg-primary rounded-full transition-all group relative flex justify-center"
-        href="/rss.xml"
-        aria-label="RSS Feed"
-      >
-        <span class="material-symbols-outlined text-xl">rss_feed</span>
-        <span
-          class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl"
-          >RSS</span
-        >
-      </a>
-    </div>
-  </div>
+		<!-- Bottom Action (RSS?) or removed since Connect is in nav -->
+		<div class="mt-auto">
+			<a
+				class="p-3 text-primary hover:text-white hover:bg-primary rounded-full transition-all group relative flex justify-center"
+				href="/rss.xml"
+				aria-label="RSS Feed"
+			>
+				<span class="material-symbols-outlined text-xl">rss_feed</span>
+				<span
+					class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl"
+					>RSS</span
+				>
+			</a>
+		</div>
+	</div>
 </aside>
