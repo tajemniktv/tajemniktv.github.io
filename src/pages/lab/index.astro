@@ -7,7 +7,7 @@ import Sidebar from "../../components/Sidebar.astro";
 import { dashboardData } from "../../data/dashboard";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const notes = (await getCollection("writing"))
+const notes = (await getCollection("lab"))
 	.filter((post) => !post.data.draft)
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
@@ -48,6 +48,7 @@ const { lab } = dashboardData;
 								<input
 									type="text"
 									id="search-input"
+									aria-label="Search lab notes"
 									placeholder="Search lab notes..."
 									class="w-full bg-surface-dark border border-white/10 rounded-full px-4 py-2 text-sm text-white focus:outline-none focus:border-primary/50 transition-colors pl-10"
 								/>
@@ -121,7 +122,7 @@ const { lab } = dashboardData;
 	const noResults = document.getElementById("no-results");
 
 	let currentTag = "all";
-	let currentSearch = "";
+	let currentSearch = searchInput?.value ?? "";
 
 	function filterPosts() {
 		let visibleCount = 0;
@@ -182,4 +183,6 @@ const { lab } = dashboardData;
 			filterPosts();
 		});
 	});
+
+	filterPosts();
 </script>

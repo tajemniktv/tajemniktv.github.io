@@ -3,6 +3,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Lab Notes | TajemnikTV">
+	<Fragment slot="head">
+		<meta http-equiv="refresh" content="0; url=/lab" />
+	</Fragment>
 	<main
 		class="min-h-screen bg-background-dark text-white grid place-items-center px-6"
 	>
@@ -21,5 +24,4 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 			</a>
 		</div>
 	</main>
-	<meta http-equiv="refresh" content="0; url=/lab" />
 </BaseLayout>

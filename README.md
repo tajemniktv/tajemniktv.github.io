@@ -33,7 +33,7 @@ npm run preview
 │   └── favicon.svg
 ├── src/
 │   ├── components/         # Astro UI components and dashboard cards
-│   ├── content/writing/    # Draft/source notes used by the Lab Notes collection
+│   ├── content/lab/        # Markdown source notes for the Lab Notes collection
 │   ├── data/               # Site identity, dashboard content, and highlights
 │   ├── layouts/            # Shared HTML/layout wrappers
 │   ├── pages/              # Static routes
@@ -48,7 +48,7 @@ npm run preview
 
 Most homepage copy lives in `src/data/dashboard.ts`, with shared identity and public links in `src/data/site.ts`.
 
-Public note-style content is presented as **Lab Notes**. The current Markdown collection still lives under `src/content/writing/` for compatibility, but navigation and generated links point to `/lab`.
+Public note-style content is presented as **Lab Notes**. The Markdown collection is named `lab` and reads from `src/content/lab/`; legacy `/writing` routes only exist to redirect old links.
 
 ## Deployment
 

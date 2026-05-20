@@ -5,7 +5,7 @@ import rss from "@astrojs/rss";
 import { siteData } from "../data/site";
 
 export async function GET(context) {
-	const posts = await getCollection("writing");
+	const posts = await getCollection("lab");
 	// Filter drafts
 	const validPosts = posts.filter((post) => !post.data.draft);
 

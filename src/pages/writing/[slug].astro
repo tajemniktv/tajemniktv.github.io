@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
-	const posts = await getCollection("writing");
+	const posts = await getCollection("lab");
 	return posts
 		.filter((post) => !post.data.draft)
 		.map((post) => ({
@@ -15,6 +15,9 @@ const { slug } = Astro.params;
 ---
 
 <BaseLayout title="Lab Notes | TajemnikTV">
+	<Fragment slot="head">
+		<meta http-equiv="refresh" content={`0; url=/lab/${slug}`} />
+	</Fragment>
 	<main
 		class="min-h-screen bg-background-dark text-white grid place-items-center px-6"
 	>
@@ -32,5 +35,4 @@ const { slug } = Astro.params;
 			</a>
 		</div>
 	</main>
-	<meta http-equiv="refresh" content={`0; url=/lab/${slug}`} />
 </BaseLayout>

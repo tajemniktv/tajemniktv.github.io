@@ -6,7 +6,7 @@ import Sidebar from "../../components/Sidebar.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
-	const posts = await getCollection("writing");
+	const posts = await getCollection("lab");
 	return posts
 		.filter((post) => !post.data.draft)
 		.map((post) => ({
@@ -24,6 +24,9 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
 	month: "long",
 	day: "numeric",
 });
+
+const wordCount = post.body?.trim().match(/\S+/g)?.length ?? 0;
+const readTime = Math.ceil(wordCount / 200);
 ---
 
 <BaseLayout title={`${post.data.title} | Lab Notes | TajemnikTV`}>
@@ -67,7 +70,7 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
 						</span>
 						<span class="flex items-center gap-1">
 							<span class="material-symbols-outlined text-base">schedule</span>
-							{Math.ceil((post.body ?? "").split(/\s+/).length / 200)} min scan
+							{readTime} min scan
 						</span>
 					</div>
 				</header>

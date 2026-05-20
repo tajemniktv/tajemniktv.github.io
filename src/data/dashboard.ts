@@ -8,7 +8,7 @@ export const dashboardData = {
     bio: siteData.bio,
     aside: siteData.secondaryBio,
     statusChips: [
-      "Currently: tweaking systems",
+      siteData.currentActivity ?? "Currently: tweaking systems",
       "Mode: overthinking with purpose",
       `Location: ${siteData.location}`,
       "Stack: Astro / Tailwind / GitHub Pages",
