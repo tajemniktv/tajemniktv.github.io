@@ -1,56 +1,59 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/478573ac-75e6-4b11-bc4a-de01cbb70d9d/deploy-status)](https://app.netlify.com/sites/tajemniktv/deploys)
+# TajemnikTV personal site
 
-# Astro Starter Kit: Basics
+Personal dashboard for Grzegorz Kaczmarski / TajemnikTV.
+
+This is a static Astro site with a dark glassy dashboard direction: identity, project cockpit, Lab Notes, interest pillars, verified links, and a small amount of controlled purple chaos.
+
+## Tech stack
+
+- Astro
+- Tailwind CSS 4
+- TypeScript
+- Astro content collections
+- GitHub Pages
+
+## Local development
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev
+npm run build
+npm run preview
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+`npm run build` runs `astro check` before `astro build`, so it catches content/schema and TypeScript issues before producing `dist/`.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## Project structure
 
 ```text
 /
 ├── public/
+│   ├── admin/              # Static CMS/admin shell files
+│   ├── images/             # Static image assets
 │   └── favicon.svg
 ├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── components/         # Astro UI components and dashboard cards
+│   ├── content/writing/    # Draft/source notes used by the Lab Notes collection
+│   ├── data/               # Site identity, dashboard content, and highlights
+│   ├── layouts/            # Shared HTML/layout wrappers
+│   ├── pages/              # Static routes
+│   └── styles/             # Tailwind entry and global CSS
+├── astro.config.mjs
+├── tailwind.config.mjs
+├── tsconfig.json
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Content model
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Most homepage copy lives in `src/data/dashboard.ts`, with shared identity and public links in `src/data/site.ts`.
 
-Any static assets, like images, can be placed in the `public/` directory.
+Public note-style content is presented as **Lab Notes**. The current Markdown collection still lives under `src/content/writing/` for compatibility, but navigation and generated links point to `/lab`.
 
-## 🧞 Commands
+## Deployment
 
-All commands are run from the root of the project, from a terminal:
+The site is built as a static Astro project and deployed to GitHub Pages. The workflow in `.github/workflows/astro.yml` handles install, build, and Pages deployment.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Editor setup
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The repository includes `tajemniktv.github.io.code-workspace` with VS Code settings for Astro, Biome, Prettier, Tailwind, and TypeScript. Open the workspace file when working on the site so extension-specific formatting and validation settings are applied consistently.

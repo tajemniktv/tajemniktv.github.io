@@ -23,119 +23,135 @@ export interface HighlightItem {
 export const highlightsData: HighlightItem[] = [
   {
     slug: "psychology",
-    title: "Psychology",
+    title: "Psychology & mind systems",
     icon: "psychology",
-    description: "Student of human mind & behaviors.",
+    description: "Attention, behavior, measurement, and the messy system UI of being a person.",
     hero: {
-      statusChip: "Currently studying psychometrics",
-      subtitle: "Exploring the intersection of cognitive science, attention economy, and digital systems."
+      statusChip: "Currently overthinking with purpose",
+      subtitle:
+        "Psychology is the lens: attention, motivation, self-regulation, measurement, identity, and the strange ways systems shape people.",
     },
     sections: [
       {
         title: "What I'm exploring",
         items: [
-          { label: "Psychometrics", description: "Measuring latent traits and validity in digital testing." },
-          { label: "Attention Economy", description: "How UI patterns exploit dopamine loops." },
-          { label: "Systems Thinking", description: "Applying cybernetics to human behavior." }
-        ]
+          { label: "Psychometrics", description: "How we measure traits, validity, and human variance without pretending the map is the territory." },
+          { label: "Attention loops", description: "Interfaces, reward systems, friction, and the tiny mechanics that steer behavior." },
+          { label: "Systems thinking", description: "Personal workflows, habits, motivation, and feedback loops viewed as one tangled machine." },
+        ],
       },
       {
-        title: "Notes",
+        title: "Likely lab-note territory",
         items: [
-          { label: "Cognitive Load in UI", href: "/writing/psychology-and-tech" },
-          { label: "The Self & The Avatar", href: "#", description: "Drafting..." }
-        ]
-      }
-    ]
+          { label: "Cognitive load in interfaces", description: "Notes currently incubating.", icon: "pending" },
+          { label: "Avatars, identity, and game systems", description: "Draft pile. Not public yet.", icon: "pending" },
+        ],
+      },
+    ],
   },
   {
     slug: "modding",
-    title: "Modding",
-    icon: "construction",
-    description: "QoL mods, UI/UX performance.",
+    title: "Game modding & UX",
+    icon: "extension",
+    description: "Game interfaces, QoL tweaks, performance, and fixing the one thing that keeps annoying me.",
     hero: {
-      statusChip: "Building TajsMods",
-      subtitle: "Fixing games one XML file at a time. Focusing on UI, UX, and performance optimization."
+      statusChip: "TajsMods in orbit",
+      subtitle:
+        "Modding is where design, systems, frustration, and curiosity meet. Sometimes the best feature is just removing the little paper cut.",
     },
     sections: [
       {
-        title: "My Mods",
+        title: "Project lanes",
         items: [
-          { label: "Core Library", description: "Common utilities for my mod ecosystem.", href: "#" },
-          { label: "Command Palette", description: "Unified command interface for power users.", href: "#" },
-          { label: "WireDrop", description: "Drag-and-drop wiring helper.", href: "#" }
-        ]
+          { label: "TajsGraph", description: "Satisfactory graphics overhaul and rendering-tweak rabbit hole.", href: "https://github.com/tajemniktv" },
+          { label: "Taj's Mods", description: "Upload Labs / Godot-flavored mod ecosystem ideas.", href: "https://github.com/tajemniktv" },
+          { label: "UEiniLab", description: "Unreal Engine INI and CVar tooling experiments.", href: "https://github.com/tajemniktv" },
+        ],
       },
       {
-        title: "Guides",
+        title: "What I care about",
         items: [
-          { label: "Optimizing HUD Performance", href: "/writing/modding-ux-performance" },
-          { label: "XML Layout Basics", href: "#" }
-        ]
-      }
-    ]
+          { label: "Less friction", description: "Menus, defaults, workflows, and tiny UX details that compound." },
+          { label: "Better feedback", description: "State, visibility, performance feel, and readable system behavior." },
+          { label: "Performance sanity", description: "Cleaner visuals are nice. Smoothness still matters." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "graphics",
+    title: "Graphics/rendering experiments",
+    icon: "deployed_code",
+    description: "Lighting, rendering config, visual polish, and performance-sensitive tinkering.",
+    hero: {
+      statusChip: "INI archaeology mode",
+      subtitle:
+        "The part of my brain that asks whether a scene can look cleaner, sharper, moodier, and still not melt the frame time.",
+    },
+    sections: [
+      {
+        title: "Recurring targets",
+        items: [
+          { label: "Rendering presets", description: "Trying to make complex settings understandable and repeatable." },
+          { label: "Visual defaults", description: "Reducing ugly tradeoffs without hiding what changed." },
+          { label: "Config tooling", description: "Editor helpers, CVar notes, and safer experimentation loops." },
+        ],
+      },
+      {
+        title: "Tools nearby",
+        items: [
+          { label: "UEiniLab", description: "VS Code extension idea for Unreal config/CVar work.", href: "https://github.com/tajemniktv" },
+          { label: "TajsGraph", description: "Satisfactory visual tuning project lane.", href: "https://github.com/tajemniktv" },
+        ],
+      },
+    ],
   },
   {
     slug: "music",
-    title: "Music",
+    title: "Music, mood & processing",
     icon: "headphones",
-    description: "Playlists and mood-curation.",
+    description: "Playlists as emotional tooling, focus scaffolding, and memory compression.",
     hero: {
-      subtitle: "Soundtracks for deep work, late night coding, and dissociation."
+      subtitle:
+        "Music is part mood regulation, part archive, part cinematic overcommitment. Useful for focus, recovery, and making normal tasks feel like a boss fight.",
     },
     sections: [
       {
-        title: "Playlists",
+        title: "Modes",
         items: [
-          { label: "Deep Focus", description: "Ambient, drone, and IDM for flow state.", icon: "play_circle" },
-          { label: "Night Drive", description: "Synthwave and retrowave for the road.", icon: "play_circle" },
-          { label: "Artifacts", description: "Glitch and experimental noises.", icon: "play_circle" }
-        ]
-      }
-    ]
+          { label: "Deep focus", description: "Ambient, electronic, soundtrack, and texture-heavy music for getting into the tunnel.", icon: "graphic_eq" },
+          { label: "Night maintenance", description: "Late-session music for polishing, debugging, and pretending time is fake.", icon: "nights_stay" },
+          { label: "Emotional processing", description: "Songs that turn vague internal weather into something with a shape.", icon: "favorite" },
+        ],
+      },
+    ],
   },
   {
-    slug: "reading",
-    title: "Reading",
-    icon: "menu_book",
-    description: "Book notes and thoughts.",
+    slug: "systems",
+    title: "Tools & digital life systems",
+    icon: "hub",
+    description: "Personal dashboards, automation, notes, and attempts to make chaos searchable.",
     hero: {
-      statusChip: "Reading: Dune",
-      subtitle: "Collecting mental models from sci-fi, philosophy, and technical manuals."
+      statusChip: "TajsOS somewhere in the lab",
+      subtitle:
+        "I keep trying to build better personal control panels: notes, tasks, moods, projects, context, and the daily fight against forgotten intent.",
     },
     sections: [
       {
-        title: "Currently Reading",
+        title: "Experiments",
         items: [
-          { label: "Dune", description: "Frank Herbert • 65%", icon: "bookmark" }
-        ]
+          { label: "TajsOS", description: "Personal LifeOS / second-brain style app experiment.", href: "https://github.com/tajemniktv" },
+          { label: "This site", description: "Public dashboard, identity hub, and static control panel.", href: "https://github.com/tajemniktv/tajemniktv.github.io" },
+          { label: "Automation notes", description: "Private workflows and tooling ideas, not all public.", icon: "lock" },
+        ],
       },
       {
-        title: "Bookshelf",
+        title: "Design rules",
         items: [
-          { label: "Thinking, Fast and Slow", description: "Daniel Kahneman" },
-          { label: "The Design of Everyday Things", description: "Don Norman" },
-          { label: "Neuromancer", description: "William Gibson" }
-        ]
-      }
-    ]
+          { label: "Information-rich", description: "Dense enough to be useful, calm enough to actually read." },
+          { label: "Low ceremony", description: "No productivity theater. Just systems that reduce mental load." },
+        ],
+      },
+    ],
   },
-  {
-    slug: "opensource",
-    title: "Open Source",
-    icon: "code",
-    description: "Contributing to the ecosystem.",
-    hero: {
-      subtitle: "Believer in free software, transparency, and community-driven development."
-    },
-    sections: [
-      {
-        title: "Projects",
-        items: [
-          { label: "tajemniktv.github.io", description: "This site source code.", href: "https://github.com/tajemniktv/tajemniktv.github.io" },
-          { label: "Dotfiles", description: "My terminal and editor configuration.", href: "#" }
-        ]
-      }
-    ]
-  }
 ];
