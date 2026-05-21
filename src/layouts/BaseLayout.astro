@@ -10,11 +10,12 @@ interface Props {
 const {
 	title,
 	description = "TajemnikTV is Grzegorz Kaczmarski's personal dashboard for projects, lab notes, highlights, and public links.",
-	image = "/images/avatar-placeholder.png",
+	image = "/images/og-card.svg",
 } = Astro.props;
 
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
-const imageUrl = new URL(image, Astro.site);
+const siteUrl = Astro.site ?? new URL("https://tajemniktv.github.io");
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
+const imageUrl = new URL(image, siteUrl);
 ---
 
 <!doctype html>

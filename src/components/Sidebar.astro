@@ -45,7 +45,7 @@ const isActive = (href: string) => {
 							aria-current={active ? "page" : undefined}
 						>
 							<span class="material-symbols-outlined text-xl" aria-hidden="true">{icon}</span>
-							<span class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl">
+							<span class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl">
 								{label}
 							</span>
 						</a>
@@ -63,7 +63,7 @@ const isActive = (href: string) => {
 			>
 				<span class="material-symbols-outlined text-xl" aria-hidden="true">rss_feed</span>
 				<span
-					class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl"
+					class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl"
 					>RSS</span
 				>
 			</a>
