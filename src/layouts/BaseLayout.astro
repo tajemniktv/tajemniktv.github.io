@@ -13,8 +13,8 @@ const {
 	image = "/images/avatar-placeholder.png",
 } = Astro.props;
 
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
-const imageUrl = new URL(image, Astro.site ?? Astro.url.origin);
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(image, Astro.site);
 ---
 
 <!doctype html>

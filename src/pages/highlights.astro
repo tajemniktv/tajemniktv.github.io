@@ -8,6 +8,9 @@ import { highlightsData } from "../data/highlights";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const { inputQueue } = dashboardData;
+if (highlightsData.length === 0) {
+	throw new Error("highlightsData must contain at least one entry");
+}
 const [featuredHighlight, ...supportingHighlights] = highlightsData;
 ---
 

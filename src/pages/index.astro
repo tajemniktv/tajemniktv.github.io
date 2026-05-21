@@ -12,11 +12,10 @@ import { dashboardData } from "../data/dashboard";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const { hero, pillars, projects, inputQueue, lab, elsewhere } = dashboardData;
-const featuredProject =
-	projects.find((project) => project.title === "TajsGraph") ?? projects[0];
-const projectIndex = projects.filter(
-	(project) => project.title !== featuredProject.title,
-);
+const featuredProject = projects.find((project) => project.featured) ?? projects[0];
+const projectIndex = featuredProject
+	? projects.filter((project) => project !== featuredProject)
+	: [];
 ---
 
 <BaseLayout
@@ -59,7 +58,7 @@ const projectIndex = projects.filter(
 					</div>
 				</div>
 
-				<ProjectCard {...featuredProject} featured={true} />
+				{featuredProject && <ProjectCard {...featuredProject} featured={true} />}
 
 				<section
 					class="col-span-1 md:col-span-2 lg:col-span-2 bg-surface-dark/80 border border-white/8 rounded-2xl p-5 md:p-6"
@@ -86,7 +85,7 @@ const projectIndex = projects.filter(
 								<a
 									href={project.href}
 									target={project.href?.startsWith("http") ? "_blank" : undefined}
-									rel={project.href?.startsWith("http") ? "noreferrer" : undefined}
+									rel={project.href?.startsWith("http") ? "noopener noreferrer" : undefined}
 									class="group rounded-xl border border-white/7 bg-white/4 p-4 transition-all hover:border-primary/35 hover:bg-white/7 focus-visible:bg-white/8"
 								>
 									<div class="flex items-start justify-between gap-3">

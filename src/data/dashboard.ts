@@ -65,6 +65,7 @@ export const dashboardData = {
     {
       title: "TajsGraph",
       subtitle: "Satisfactory graphics overhaul",
+      featured: true,
       description:
         "Rendering obsession packaged as a modding project: cleaner visuals, better defaults, and a lot of staring at settings until they confess.",
       tags: ["Satisfactory", "graphics", "rendering", "modding"],

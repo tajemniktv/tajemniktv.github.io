@@ -16,7 +16,7 @@ const Wrapper = href ? "a" : "article";
 <Wrapper
 	href={href}
 	target={href?.startsWith("http") ? "_blank" : undefined}
-	rel={href?.startsWith("http") ? "noreferrer" : undefined}
+	rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
 	class:list={[
 		"group bg-surface-dark/90 border border-white/7 rounded-2xl flex flex-col hover:border-primary/40 hover:-translate-y-0.5 transition-all shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]",
 		featured
