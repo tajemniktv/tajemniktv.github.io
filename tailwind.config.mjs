@@ -9,12 +9,12 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				"primary": "#7f13ec",
+				"primary": "#8f5cc7",
 				"background-light": "#f7f6f8",
-				"background-dark": "#130b1a",
-				"surface-dark": "#1f1429",
-				"surface-light": "#2a1d35",
-				"accent-purple": "#9d4edd",
+				"background-dark": "#120d17",
+				"surface-dark": "#1d1724",
+				"surface-light": "#2a2231",
+				"accent-purple": "#b28ad8",
 			},
 			fontFamily: {
 				display: ["Spline Sans", "sans-serif"],

@@ -15,7 +15,10 @@ const tags = [...new Set(notes.flatMap((post) => post.data.tags))];
 const { lab } = dashboardData;
 ---
 
-<BaseLayout title="Lab Notes | TajemnikTV">
+<BaseLayout
+	title="Lab Notes | TajemnikTV"
+	description="Selective lab notes from TajemnikTV: project logs, research trails, and practical experiments."
+>
 	<div class="flex min-h-screen w-full relative">
 		<Sidebar />
 
@@ -30,11 +33,11 @@ const { lab } = dashboardData;
 				>
 					TajemnikTV research-ish terminal
 				</p>
-				<h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">
+				<h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">
 					Lab Notes
 				</h1>
 				<p class="text-lg text-gray-300 max-w-3xl leading-relaxed">
-					Experiments, project notes, rabbit holes, and thoughts that are useful
+					Experiments, project logs, research trails, and thoughts that are useful
 					enough to escape the private notes folder. This is not pretending to
 					be a formal blog.
 				</p>
@@ -52,7 +55,7 @@ const { lab } = dashboardData;
 									placeholder="Search lab notes..."
 									class="w-full bg-surface-dark border border-white/10 rounded-full px-4 py-2 text-sm text-white focus:outline-none focus:border-primary/50 transition-colors pl-10"
 								/>
-								<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">
+								<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm" aria-hidden="true">
 									search
 								</span>
 							</div>
@@ -92,10 +95,10 @@ const { lab } = dashboardData;
 				:	<GlassCard class="p-8 md:p-10">
 						<div class="flex flex-col md:flex-row gap-6 md:items-center">
 							<div class="h-16 w-16 rounded-2xl bg-primary/20 text-primary flex items-center justify-center shrink-0">
-								<span class="material-symbols-outlined text-4xl">science</span>
+								<span class="material-symbols-outlined text-4xl" aria-hidden="true">science</span>
 							</div>
 							<div>
-								<p class="text-xs font-bold uppercase tracking-[0.18em] text-cyan-100/70 mb-2">
+								<p class="text-xs font-bold uppercase tracking-[0.18em] text-gray-400 mb-2">
 									{lab.status}
 								</p>
 								<h2 class="text-2xl font-bold text-white mb-3">
@@ -135,7 +138,7 @@ const { lab } = dashboardData;
 			const matchesSearch = postTitle.includes(currentSearch.toLowerCase());
 
 			if (matchesTag && matchesSearch) {
-				(post as HTMLElement).style.display = "block";
+				(post as HTMLElement).style.display = "";
 				visibleCount++;
 			} else {
 				(post as HTMLElement).style.display = "none";

@@ -29,14 +29,14 @@ const {
 ---
 
 <section
-	class="col-span-1 md:col-span-2 lg:col-span-2 row-span-2 relative group overflow-hidden rounded-2xl bg-surface-dark/95 p-7 md:p-8 flex flex-col justify-between min-h-115 border border-white/10 shadow-2xl shadow-primary/10"
+	class="col-span-1 md:col-span-2 lg:col-span-2 row-span-2 relative group overflow-hidden rounded-2xl bg-surface-dark/95 p-7 md:p-8 flex flex-col justify-between min-h-115 border border-white/10 shadow-2xl shadow-black/20"
 >
 	<div
-		class="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(157,78,221,0.24),transparent_34%),radial-gradient(circle_at_86%_22%,rgba(34,211,238,0.12),transparent_28%),linear-gradient(135deg,rgba(255,255,255,0.06),transparent_42%)] pointer-events-none"
+		class="absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(143,92,199,0.16),transparent_32%),linear-gradient(135deg,rgba(255,255,255,0.055),transparent_45%)] pointer-events-none"
 	>
 	</div>
 	<div
-		class="absolute -right-16 -bottom-20 h-64 w-64 rounded-full border border-primary/30 bg-primary/10 blur-2xl pointer-events-none"
+		class="absolute -right-16 -bottom-20 h-64 w-64 rounded-full border border-white/10 bg-white/5 blur-2xl pointer-events-none"
 	>
 	</div>
 
@@ -48,21 +48,19 @@ const {
 				>
 					{handle}.exe
 				</p>
-				<h1
-					class="text-4xl md:text-5xl font-bold mb-3 gradient-text tracking-tight leading-[1.02]"
-				>
+				<h1 class="text-4xl md:text-5xl font-bold mb-3 text-white tracking-tight leading-[1.02]">
 					{name}
 				</h1>
-				<p class="text-sm md:text-base text-cyan-100/80 font-medium max-w-xl">
+				<p class="text-sm md:text-base text-gray-300 font-medium max-w-xl">
 					{tagline}
 				</p>
 			</div>
 
 			<div
-				class="hidden sm:flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-primary shadow-lg shadow-primary/20"
+				class="hidden sm:flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-primary"
 				aria-hidden="true"
 			>
-				<span class="material-symbols-outlined text-4xl">bolt</span>
+				<span class="material-symbols-outlined text-4xl" aria-hidden="true">bolt</span>
 			</div>
 		</div>
 
@@ -86,10 +84,10 @@ const {
 
 	<div class="mt-8 flex flex-wrap gap-3 relative z-10">
 		<a
-			class="px-5 py-3 bg-primary hover:bg-primary/90 text-white rounded-full font-bold text-sm transition-all hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 shadow-lg shadow-primary/30"
+			class="px-5 py-3 bg-primary hover:bg-primary/90 text-white rounded-full font-bold text-sm transition-all hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 shadow-lg shadow-black/25"
 			href={primaryCta.href}
 		>
-			<span class="material-symbols-outlined text-[20px]"
+			<span class="material-symbols-outlined text-[20px]" aria-hidden="true"
 				>{primaryCta.icon}</span
 			>
 			{primaryCta.label}
@@ -98,7 +96,7 @@ const {
 			class="px-5 py-3 bg-white/5 hover:bg-white/10 text-white border border-white/15 rounded-full font-semibold text-sm transition-all flex items-center gap-2"
 			href={secondaryCta.href}
 		>
-			<span class="material-symbols-outlined text-[20px]">
+			<span class="material-symbols-outlined text-[20px]" aria-hidden="true">
 				{secondaryCta.icon}
 			</span>
 			{secondaryCta.label}

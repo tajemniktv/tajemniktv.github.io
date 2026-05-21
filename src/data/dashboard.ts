@@ -8,8 +8,8 @@ export const dashboardData = {
     bio: siteData.bio,
     aside: siteData.secondaryBio,
     statusChips: [
-      siteData.currentActivity ?? "Currently: tweaking systems",
-      "Mode: overthinking with purpose",
+      siteData.currentActivity ?? "Currently: tuning the workbench",
+      "Mode: careful tinkering",
       `Location: ${siteData.location}`,
       "Stack: Astro / Tailwind / GitHub Pages",
     ],
@@ -35,7 +35,7 @@ export const dashboardData = {
     {
       title: "Game modding & UX",
       description:
-        "Fixing friction, reshaping interfaces, and making game systems feel better without pretending the rabbit hole is small.",
+        "Fixing friction, reshaping interfaces, and making game mechanics feel better without pretending the work is small.",
       icon: "extension",
       color: "orange",
     },
@@ -56,7 +56,7 @@ export const dashboardData = {
     {
       title: "Tools & digital life systems",
       description:
-        "Personal dashboards, automation, second-brain experiments, and other attempts to make chaos searchable.",
+        "Personal dashboards, automation, second-brain experiments, and other attempts to keep context findable.",
       icon: "hub",
       color: "violet",
     },
@@ -82,7 +82,7 @@ export const dashboardData = {
       title: "TajsOS",
       subtitle: "Personal LifeOS experiment",
       description:
-        "A second-brain style app idea for tasks, notes, mood, systems, and the daily attempt to remember what the plan was.",
+        "A second-brain style app idea for tasks, mood, project context, and the daily attempt to remember what the plan was.",
       tags: ["LifeOS", "notes", "automation", "systems"],
       href: "https://github.com/tajemniktv",
     },
@@ -104,9 +104,9 @@ export const dashboardData = {
     },
   ],
   inputQueue: {
-    title: "Current rabbit holes",
+    title: "Current input queue",
     description:
-      "A rotating input queue instead of a fake bookshelf. Some of this becomes notes. Some of it becomes ten browser tabs and a suspiciously specific opinion.",
+      "A rotating input queue instead of a fake bookshelf. Some of this becomes lab material. Some of it becomes ten browser tabs and a suspiciously specific opinion.",
     items: [
       "Psychometrics, attention, and behavior loops",
       "Satisfactory rendering and UI polish",
@@ -117,12 +117,12 @@ export const dashboardData = {
   },
   lab: {
     title: "Lab Notes",
-    status: "Currently incubating",
+    status: "Drafts in progress",
     description:
-      "Not a formal blog. More like experiments, rabbit holes, project notes, half-polished thoughts, and occasional brain dumps that survived long enough to be useful.",
-    emptyTitle: "Public notes are still booting",
+      "Not a formal blog. More like experiments, project logs, half-polished thoughts, and occasional brain dumps that survived long enough to be useful.",
+    emptyTitle: "Public notes will stay selective",
     emptyDescription:
-      "The old placeholder essays are staying private until they stop sounding like a template wearing a trench coat.",
+      "The old placeholder essays are staying private. The public lab is for entries with enough shape to be useful.",
     href: "/lab",
   },
   elsewhere: siteData.socials,

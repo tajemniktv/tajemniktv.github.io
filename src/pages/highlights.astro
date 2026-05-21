@@ -8,9 +8,13 @@ import { highlightsData } from "../data/highlights";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const { inputQueue } = dashboardData;
+const [featuredHighlight, ...supportingHighlights] = highlightsData;
 ---
 
-<BaseLayout title="Highlights | TajemnikTV">
+<BaseLayout
+	title="Highlights | TajemnikTV"
+	description="The recurring interests behind TajemnikTV: psychology, modding, graphics, music, and practical personal tooling."
+>
 	<div class="flex min-h-screen w-full relative">
 		<Sidebar />
 
@@ -27,73 +31,104 @@ const { inputQueue } = dashboardData;
 						<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
 						<span
 							class="text-xs font-bold text-gray-300 uppercase tracking-wide"
-							>Systems, taste, feelings, config files</span
+							>Mind, games, rendering, music, tools</span
 						>
 					</div>
 				</div>
-				<h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">
-					Highlights
-				</h1>
+				<h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">Highlights</h1>
 				<p class="text-lg text-gray-300 max-w-2xl">
-					The recurring obsessions behind the dashboard: mind systems, games,
-					visuals, music, tools, and the very human urge to make chaos legible.
+					The recurring interests behind the dashboard: mind, games, visuals,
+					music, tools, and the very human urge to make things easier to read.
 				</p>
 			</header>
 
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-				<!-- Main Interest Areas -->
-				{
-					highlightsData.map((item) => (
-						<GlassCard class="p-6 flex flex-col gap-4 group" hoverEffect={true}>
-							<div class="w-12 h-12 rounded-2xl bg-primary/20 text-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-								<span class="material-symbols-outlined text-3xl">
-									{item.icon}
+			<div
+				class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(24rem,0.9fr)] gap-6 items-start"
+			>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-6 self-start">
+					<a
+						href={`/highlights/${featuredHighlight.slug}`}
+						class="group md:col-span-2 rounded-2xl border border-white/8 bg-surface-dark/85 p-7 md:p-8 transition-all hover:border-primary/35 hover:bg-white/5 min-h-72"
+					>
+						<div class="flex items-start justify-between gap-5">
+							<div class="max-w-2xl">
+								<p class="text-xs font-bold uppercase tracking-[0.18em] text-primary/85 mb-3">
+									Lead thread
+								</p>
+								<h2 class="text-3xl font-bold text-white mb-3">
+									{featuredHighlight.title}
+								</h2>
+								<p class="text-gray-300 leading-relaxed">
+									{featuredHighlight.hero.subtitle}
+								</p>
+							</div>
+							<div class="hidden sm:flex h-14 w-14 rounded-2xl bg-white/6 border border-white/8 items-center justify-center text-primary/90">
+								<span class="material-symbols-outlined text-3xl" aria-hidden="true">
+									{featuredHighlight.icon}
 								</span>
 							</div>
-							<div>
-								<h3 class="text-xl font-bold text-white mb-2">{item.title}</h3>
-								<p class="text-sm text-gray-300 mb-4">{item.description}</p>
-								<a
-									href={`/highlights/${item.slug}`}
-									class="text-xs font-bold uppercase tracking-wider text-primary hover:text-white transition-colors flex items-center gap-1"
-								>
-									Explore{" "}
-									<span class="material-symbols-outlined text-sm">
-										arrow_forward
-									</span>
-								</a>
-							</div>
-						</GlassCard>
-					))
-				}
-
-				<!-- Currently Reading (Reusing component) -->
-				<ReadingCard {...inputQueue} />
-
-				<!-- Detailed Blocks (Example) -->
-				<GlassCard class="col-span-1 md:col-span-2 lg:col-span-2 p-6 md:p-8">
-					<div class="flex items-start gap-4 mb-4">
-						<span class="material-symbols-outlined text-3xl text-accent-purple"
-							>psychology</span
-						>
-						<div>
-							<h3 class="text-2xl font-bold text-white mb-2">
-								Why these pillars?
-							</h3>
-							<p class="text-gray-300 leading-relaxed mb-4">
-								They are not resume categories. They are the repeat offenders:
-								psychology explains the humans, modding exposes the systems,
-								rendering rewards obsessive tuning, music handles the emotional
-								backlog, and tooling tries to keep all of it searchable.
-							</p>
-							<p class="text-gray-300 leading-relaxed">
-								The overlap is the point. A game UI, a study note, a playlist,
-								and a personal dashboard can all be attempts to manage
-								attention.
-							</p>
 						</div>
-					</div>
-				</GlassCard>
+						<div class="mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-gray-400 group-hover:text-white transition-colors">
+							Open highlight
+							<span class="material-symbols-outlined text-sm" aria-hidden="true">
+								arrow_forward
+							</span>
+						</div>
+					</a>
+
+					<GlassCard class="md:col-span-2 p-6 md:p-8">
+						<div class="flex items-start gap-4 mb-4">
+							<span class="material-symbols-outlined text-3xl text-accent-purple" aria-hidden="true"
+								>psychology</span
+							>
+							<div>
+								<h3 class="text-2xl font-bold text-white mb-2">
+									Why these pillars?
+								</h3>
+								<p class="text-gray-300 leading-relaxed mb-4">
+									They are not resume categories. They are repeat signals:
+									psychology explains the humans, modding exposes the mechanics,
+									rendering rewards careful tuning, music handles the emotional
+									backlog, and tooling keeps the work searchable.
+								</p>
+								<p class="text-gray-300 leading-relaxed">
+									The overlap is the point. A game UI, a study note, a playlist,
+									and a personal dashboard can all be attempts to manage
+									attention.
+								</p>
+							</div>
+						</div>
+					</GlassCard>
+				</div>
+
+				<aside class="flex flex-col gap-4 self-start">
+					{
+						supportingHighlights.map((item) => (
+							<a
+								href={`/highlights/${item.slug}`}
+								class="group rounded-2xl border border-white/7 bg-white/4 p-5 transition-all hover:border-primary/35 hover:bg-white/7"
+							>
+								<div class="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-4">
+									<div class="w-10 h-10 rounded-xl bg-surface-light border border-white/8 text-primary/90 flex items-center justify-center shrink-0">
+										<span class="material-symbols-outlined text-2xl" aria-hidden="true">
+											{item.icon}
+										</span>
+									</div>
+									<div class="min-w-0">
+										<h3 class="font-bold text-white mb-1 leading-snug">
+											{item.title}
+										</h3>
+										<p class="text-sm text-gray-400 leading-relaxed">
+											{item.description}
+										</p>
+									</div>
+								</div>
+							</a>
+						))
+					}
+
+					<ReadingCard {...inputQueue} />
+				</aside>
 			</div>
 		</main>
 	</div>

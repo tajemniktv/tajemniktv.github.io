@@ -9,7 +9,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const { socials, bio, secondaryBio } = siteData;
 ---
 
-<BaseLayout title="Connect | TajemnikTV">
+<BaseLayout
+	title="Connect | TajemnikTV"
+	description="Verified public links and profile context for TajemnikTV."
+>
 	<div class="flex min-h-screen w-full relative">
 		<Sidebar />
 
@@ -19,9 +22,7 @@ const { socials, bio, secondaryBio } = siteData;
 			<MobileHeader />
 
 			<header class="mb-12">
-				<h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">
-					Connect
-				</h1>
+				<h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">Connect</h1>
 				<p class="text-lg text-gray-300 max-w-2xl">
 					Places where TajemnikTV exists publicly. No fake contact form, no
 					recruiter bait, no mystery inbox.
@@ -62,12 +63,12 @@ const { socials, bio, secondaryBio } = siteData;
 					<ElsewhereCard links={socials} />
 
 					<GlassCard
-						class="p-6 bg-linear-to-br from-indigo-900/40 to-purple-900/40 border-indigo-500/20"
+						class="p-6 bg-[linear-gradient(145deg,rgba(36,29,44,0.9),rgba(24,19,30,0.9))] border-white/10"
 					>
 						<h3
 							class="text-xl font-bold text-white mb-2 flex items-center gap-2"
 						>
-							<span class="material-symbols-outlined">handshake</span>
+							<span class="material-symbols-outlined" aria-hidden="true">handshake</span>
 							Current posture
 						</h3>
 						<p class="text-sm text-gray-300 mb-4">
@@ -77,7 +78,7 @@ const { socials, bio, secondaryBio } = siteData;
 						<div
 							class="flex items-center gap-2 text-xs font-bold text-indigo-300 uppercase tracking-widest"
 						>
-							Mode: <span class="text-cyan-200">Overthinking with purpose</span>
+							Mode: <span class="text-gray-200">Careful tinkering</span>
 						</div>
 					</GlassCard>
 				</div>
