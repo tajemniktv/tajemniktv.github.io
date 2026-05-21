@@ -15,16 +15,16 @@ const isActive = (href: string) => {
 ---
 
 <aside
-	class="hidden lg:flex fixed left-8 top-8 bottom-8 w-20 flex-col items-center glass-card rounded-full py-6 z-50 shadow-[0_0_40px_-10px_rgba(127,19,236,0.3)]"
+	class="hidden lg:flex fixed left-8 top-8 bottom-8 w-20 flex-col items-center glass-card rounded-full py-6 z-50 shadow-[0_24px_70px_-35px_rgba(0,0,0,0.85)]"
 >
 	<div class="flex flex-col items-center gap-6 h-full">
 		<!-- Logo -->
 		<a
 			href="/"
-			class="h-10 w-10 flex items-center justify-center bg-primary rounded-full text-white shadow-lg shadow-primary/40 mb-2 hover:scale-110 transition-transform"
+			class="h-10 w-10 flex items-center justify-center bg-primary rounded-full text-white shadow-lg shadow-black/25 mb-2 hover:scale-110 transition-transform"
 			aria-label="TajemnikTV Home"
 		>
-			<span class="material-symbols-outlined text-xl">bolt</span>
+			<span class="material-symbols-outlined text-xl" aria-hidden="true">bolt</span>
 		</a>
 
 		<!-- Nav -->
@@ -44,8 +44,8 @@ const isActive = (href: string) => {
 							aria-label={label}
 							aria-current={active ? "page" : undefined}
 						>
-							<span class="material-symbols-outlined text-xl">{icon}</span>
-							<span class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl">
+							<span class="material-symbols-outlined text-xl" aria-hidden="true">{icon}</span>
+							<span class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl">
 								{label}
 							</span>
 						</a>
@@ -61,9 +61,9 @@ const isActive = (href: string) => {
 				href="/rss.xml"
 				aria-label="RSS Feed"
 			>
-				<span class="material-symbols-outlined text-xl">rss_feed</span>
+				<span class="material-symbols-outlined text-xl" aria-hidden="true">rss_feed</span>
 				<span
-					class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl"
+					class="absolute left-14 bg-surface-light border border-white/10 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50 shadow-xl"
 					>RSS</span
 				>
 			</a>

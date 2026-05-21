@@ -5,7 +5,28 @@
 
 @layer base {
 	html {
-		background-color: #130b1a;
+		background-color: #120d17;
+	}
+
+	body::before {
+		content: "";
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		z-index: 60;
+		opacity: 0.18;
+		background-image:
+			linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+		background-size: 3px 3px, 37px 37px;
+		mix-blend-mode: soft-light;
+	}
+
+	a:focus-visible,
+	button:focus-visible,
+	input:focus-visible {
+		outline: 2px solid rgba(173, 146, 201, 0.95);
+		outline-offset: 3px;
 	}
 }
 
@@ -14,25 +35,26 @@
 	width: 8px;
 }
 ::-webkit-scrollbar-track {
-	background: #130b1a;
+	background: #120d17;
 }
 ::-webkit-scrollbar-thumb {
-	background: #362348;
+	background: #3a3042;
 	border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-	background: #7f13ec;
+	background: #8c6aaa;
 }
 
 /* Utilities */
 .glass-card {
-	background: rgba(31, 20, 41, 0.7);
-	backdrop-filter: blur(12px);
-	border: 1px solid rgba(127, 19, 236, 0.1);
+	background: rgba(28, 22, 34, 0.74);
+	backdrop-filter: blur(14px);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
 }
 
 .gradient-text {
-	background: linear-gradient(135deg, #fff 0%, #ad92c9 100%);
+	background: linear-gradient(135deg, #fff 0%, #c4b6d3 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }

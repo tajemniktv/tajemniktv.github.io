@@ -25,9 +25,9 @@ export const highlightsData: HighlightItem[] = [
     slug: "psychology",
     title: "Psychology & mind systems",
     icon: "psychology",
-    description: "Attention, behavior, measurement, and the messy system UI of being a person.",
+    description: "Attention, behavior, measurement, and the messy control panel of being a person.",
     hero: {
-      statusChip: "Currently overthinking with purpose",
+      statusChip: "Currently reading around psychometrics",
       subtitle:
         "Psychology is the lens: attention, motivation, self-regulation, measurement, identity, and the strange ways systems shape people.",
     },
@@ -37,13 +37,13 @@ export const highlightsData: HighlightItem[] = [
         items: [
           { label: "Psychometrics", description: "How we measure traits, validity, and human variance without pretending the map is the territory." },
           { label: "Attention loops", description: "Interfaces, reward systems, friction, and the tiny mechanics that steer behavior." },
-          { label: "Systems thinking", description: "Personal workflows, habits, motivation, and feedback loops viewed as one tangled machine." },
+          { label: "Feedback loops", description: "Personal workflows, habits, motivation, and behavior viewed as one tangled machine." },
         ],
       },
       {
         title: "Likely lab-note territory",
         items: [
-          { label: "Cognitive load in interfaces", description: "Notes currently incubating.", icon: "pending" },
+          { label: "Cognitive load in interfaces", description: "Draft queue.", icon: "pending" },
           { label: "Avatars, identity, and game systems", description: "Draft pile. Not public yet.", icon: "pending" },
         ],
       },
@@ -63,7 +63,7 @@ export const highlightsData: HighlightItem[] = [
       {
         title: "Project lanes",
         items: [
-          { label: "TajsGraph", description: "Satisfactory graphics overhaul and rendering-tweak rabbit hole.", href: "https://github.com/tajemniktv" },
+          { label: "TajsGraph", description: "Satisfactory graphics overhaul and rendering-tweak project lane.", href: "https://github.com/tajemniktv" },
           { label: "Taj's Mods", description: "Upload Labs / Godot-flavored mod ecosystem ideas.", href: "https://github.com/tajemniktv" },
           { label: "UEiniLab", description: "Unreal Engine INI and CVar tooling experiments.", href: "https://github.com/tajemniktv" },
         ],
@@ -130,9 +130,9 @@ export const highlightsData: HighlightItem[] = [
     slug: "systems",
     title: "Tools & digital life systems",
     icon: "hub",
-    description: "Personal dashboards, automation, notes, and attempts to make chaos searchable.",
+    description: "Personal dashboards, automation, notes, and attempts to keep context findable.",
     hero: {
-      statusChip: "TajsOS somewhere in the lab",
+      statusChip: "TajsOS on the bench",
       subtitle:
         "I keep trying to build better personal control panels: notes, tasks, moods, projects, context, and the daily fight against forgotten intent.",
     },

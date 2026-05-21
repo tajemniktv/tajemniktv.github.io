@@ -29,7 +29,10 @@ const wordCount = post.body?.trim().match(/\S+/g)?.length ?? 0;
 const readTime = Math.ceil(wordCount / 200);
 ---
 
-<BaseLayout title={`${post.data.title} | Lab Notes | TajemnikTV`}>
+<BaseLayout
+	title={`${post.data.title} | Lab Notes | TajemnikTV`}
+	description={post.data.description}
+>
 	<div class="flex min-h-screen w-full relative">
 		<Sidebar />
 
@@ -44,6 +47,7 @@ const readTime = Math.ceil(wordCount / 200);
 			>
 				<span
 					class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform"
+					aria-hidden="true"
 					>arrow_back</span
 				>
 				Back to Lab Notes
@@ -64,12 +68,13 @@ const readTime = Math.ceil(wordCount / 200);
 					<div class="flex items-center gap-4 text-sm text-gray-400">
 						<span class="flex items-center gap-1">
 							<span class="material-symbols-outlined text-base"
+								aria-hidden="true"
 								>calendar_today</span
 							>
 							{formattedDate}
 						</span>
 						<span class="flex items-center gap-1">
-							<span class="material-symbols-outlined text-base">schedule</span>
+							<span class="material-symbols-outlined text-base" aria-hidden="true">schedule</span>
 							{readTime} min scan
 						</span>
 					</div>

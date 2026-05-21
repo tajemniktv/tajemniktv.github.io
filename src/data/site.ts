@@ -4,15 +4,15 @@ export const siteData = {
   shortName: "Taj",
   location: "Radom, Poland",
   tagline:
-    "Hobbyist developer • modder • graphics tinkerer • psychology enjoyer • professional overthinker",
-  bio: "Psychology student, modder, graphics tinkerer, and professional overthinker. I collect ideas about minds, systems, games, interfaces, and occasionally turn the chaos into something useful.",
+    "Hobbyist developer • modder • graphics tinkerer • psychology enjoyer • patient debugger",
+  bio: "Psychology student, modder, and graphics tinkerer. I collect ideas about minds, games, interfaces, and occasionally turn the mess into something useful.",
   secondaryBio:
     "Broad interests, questionable sleep schedule, and way too many ideas.",
   status: {
-    text: "Systems awake",
+    text: "Workbench awake",
     color: "violet",
   },
-  currentActivity: "Currently: tweaking systems",
+  currentActivity: "Currently: tuning the workbench",
   socials: [
     {
       title: "GitHub",
