@@ -4,15 +4,15 @@ export const siteData = {
   shortName: "Taj",
   location: "Radom, Poland",
   tagline:
-    "Hobbyist developer • modder • graphics tinkerer • psychology enjoyer • patient debugger",
-  bio: "Psychology student, modder, and graphics tinkerer. I collect ideas about minds, games, interfaces, and occasionally turn the mess into something useful.",
+    "Developer • modder • performance tinkerer • psychology nerd • chronic profiler",
+  bio: "I build, mod, profile, and occasionally reverse-engineer things that interest me. Most of the trail leads through games, rendering, developer tooling, AI, and psychology.",
   secondaryBio:
-    "Broad interests, questionable sleep schedule, and way too many ideas.",
+    "I like systems with knobs, metrics, edge cases, and enough complexity to make a normal person close the tab.",
   status: {
-    text: "Workbench awake",
+    text: "Workbench online",
     color: "violet",
   },
-  currentActivity: "Currently: tuning the workbench",
+  currentActivity: "Currently: profiling games and building mod/tooling experiments",
   socials: [
     {
       title: "GitHub",

@@ -2,30 +2,22 @@
 
 ---
 
-<div class="lg:hidden flex items-center justify-between gap-4 mb-8">
+<div class="lg:hidden flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
 	<a
 		href="/"
 		class="flex items-center gap-3 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-dark"
 		aria-label="TajemnikTV home"
 	>
 		<div
-			class="h-10 w-10 flex items-center justify-center bg-primary rounded-full text-white"
+			class="h-10 w-10 flex items-center justify-center bg-primary rounded-full text-white shadow-lg shadow-black/20"
 		>
 			<span class="material-symbols-outlined" aria-hidden="true">bolt</span>
 		</div>
 		<span class="font-bold text-lg tracking-tight">TajemnikTV</span>
 	</a>
-	<nav class="flex items-center gap-2 text-xs font-bold text-gray-300">
-		<a class="rounded-full bg-white/5 px-3 py-2 hover:text-white" href="/lab"
-			>Lab</a
-		>
-		<a
-			class="rounded-full bg-white/5 px-3 py-2 hover:text-white"
-			href="/highlights">Pillars</a
-		>
-		<a
-			class="rounded-full bg-white/5 px-3 py-2 hover:text-white"
-			href="/connect">Links</a
-		>
+	<nav class="flex flex-wrap items-center gap-2 text-xs font-bold text-gray-300" aria-label="Primary navigation">
+		<a class="rounded-full bg-white/5 border border-white/6 px-3 py-2 hover:text-white hover:bg-white/9" href="/lab">Lab</a>
+		<a class="rounded-full bg-white/5 border border-white/6 px-3 py-2 hover:text-white hover:bg-white/9" href="/highlights">Highlights</a>
+		<a class="rounded-full bg-white/5 border border-white/6 px-3 py-2 hover:text-white hover:bg-white/9" href="/connect">Connect</a>
 	</nav>
 </div>

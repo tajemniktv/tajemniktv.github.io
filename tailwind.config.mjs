@@ -9,16 +9,17 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				"primary": "#8f5cc7",
+				"primary": "#9b6dd1",
 				"background-light": "#f7f6f8",
-				"background-dark": "#120d17",
-				"surface-dark": "#1d1724",
-				"surface-light": "#2a2231",
-				"accent-purple": "#b28ad8",
+				"background-dark": "#17131b",
+				"surface-dark": "#211b27",
+				"surface-light": "#302638",
+				"accent-purple": "#c097e6",
 			},
 			fontFamily: {
-				display: ["Spline Sans", "sans-serif"],
-				body: ["Noto Sans", "sans-serif"],
+				display: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+				body: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+				mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "monospace"],
 			},
 			borderRadius: {
 				"DEFAULT": "1rem",
