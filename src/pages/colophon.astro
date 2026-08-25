@@ -28,10 +28,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 					<h2 class="text-2xl font-bold text-white mb-6">Tech Stack</h2>
 					<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
 						<div class="flex flex-col gap-2">
-							<span
-								class="text-xs font-bold uppercase tracking-wider text-gray-500"
-								>Core</span
-							>
+							<span class="text-xs font-bold uppercase tracking-wider text-gray-500">Core</span>
 							<a
 								href="https://astro.build"
 								target="_blank"
@@ -42,10 +39,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 							<span class="text-sm text-gray-400">Static Site Generator</span>
 						</div>
 						<div class="flex flex-col gap-2">
-							<span
-								class="text-xs font-bold uppercase tracking-wider text-gray-500"
-								>Styling</span
-							>
+							<span class="text-xs font-bold uppercase tracking-wider text-gray-500">Styling</span>
 							<a
 								href="https://tailwindcss.com"
 								target="_blank"
@@ -56,10 +50,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 							<span class="text-sm text-gray-400">Utility-first CSS</span>
 						</div>
 						<div class="flex flex-col gap-2">
-							<span
-								class="text-xs font-bold uppercase tracking-wider text-gray-500"
-								>Hosting</span
-							>
+							<span class="text-xs font-bold uppercase tracking-wider text-gray-500">Hosting</span>
 							<a
 								href="https://pages.github.com"
 								target="_blank"
@@ -77,16 +68,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 						<GlassCard class="p-6">
 							<h3 class="text-lg font-bold text-white mb-4">Typography</h3>
-							<div class="flex flex-col gap-4">
+							<div class="flex flex-col gap-5">
 								<div>
-									<p class="font-display text-3xl text-white mb-1">
-										Spline Sans
-									</p>
-									<p class="text-xs text-gray-500">Headings & Display</p>
+									<p class="font-display text-3xl text-white mb-1">Inter</p>
+									<p class="text-xs text-gray-500">Headings & body copy</p>
 								</div>
 								<div>
-									<p class="font-body text-xl text-gray-300 mb-1">Noto Sans</p>
-									<p class="text-xs text-gray-500">Body Copy</p>
+									<p class="font-mono text-xl text-gray-300 mb-1">JetBrains Mono</p>
+									<p class="text-xs text-gray-500">Code & technical accents</p>
 								</div>
 							</div>
 						</GlassCard>
@@ -95,30 +84,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 							<h3 class="text-lg font-bold text-white mb-4">Colors</h3>
 							<div class="flex flex-col gap-3">
 								<div class="flex items-center gap-3">
-									<div class="w-12 h-12 rounded-lg shadow-lg bg-[#7f13ec]">
-									</div>
+									<div class="w-12 h-12 rounded-lg shadow-lg bg-[#9b6dd1]"></div>
 									<div>
-										<p class="text-white font-mono text-sm">#7f13ec</p>
+										<p class="text-white font-mono text-sm">#9b6dd1</p>
 										<p class="text-xs text-gray-500">Primary Purple</p>
 									</div>
 								</div>
 								<div class="flex items-center gap-3">
-									<div
-										class="w-12 h-12 rounded-lg shadow-lg bg-[#130b1a] border border-white/10"
-									>
-									</div>
+									<div class="w-12 h-12 rounded-lg shadow-lg bg-[#17131b] border border-white/10"></div>
 									<div>
-										<p class="text-white font-mono text-sm">#130b1a</p>
+										<p class="text-white font-mono text-sm">#17131b</p>
 										<p class="text-xs text-gray-500">Background Dark</p>
 									</div>
 								</div>
 								<div class="flex items-center gap-3">
-									<div
-										class="w-12 h-12 rounded-lg shadow-lg bg-[#1f1429] border border-white/10"
-									>
-									</div>
+									<div class="w-12 h-12 rounded-lg shadow-lg bg-[#211b27] border border-white/10"></div>
 									<div>
-										<p class="text-white font-mono text-sm">#1f1429</p>
+										<p class="text-white font-mono text-sm">#211b27</p>
 										<p class="text-xs text-gray-500">Surface Dark</p>
 									</div>
 								</div>
@@ -128,19 +110,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 				</section>
 
 				<section class="max-w-prose">
-					<h2 class="text-2xl font-bold text-white mb-4">
-						Why this aesthetic?
-					</h2>
+					<h2 class="text-2xl font-bold text-white mb-4">Why this aesthetic?</h2>
 					<p class="text-gray-300 leading-relaxed mb-4">
-						I believe personal spaces on the web should feel... personal. Not
-						corporate, not purely functional, but expressive.
+						Personal sites should feel like somebody actually lives there. This one
+						leans into dark glass, restrained purple accents, and dense little
+						interfaces without turning every card into a neon nightclub.
 					</p>
 					<p class="text-gray-300 leading-relaxed">
-						The dark glassmorphism style reflects my late-night coding sessions
-						and my love for game UIs (like <em>Destiny 2</em> or <em
-							>Star Citizen</em
-						>). It's built to be comfortable for reading in the dark, with just
-						enough glow to feel alive.
+						The goal is a comfortable late-night workspace aesthetic: enough contrast
+						for reading, enough texture to avoid flat black, and enough character to
+						avoid looking like the default landing page for a fictional startup.
 					</p>
 				</section>
 			</div>
