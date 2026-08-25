@@ -41,13 +41,27 @@ jobs:
         run: npm ci
         working-directory: ${{ env.BUILD_PATH }}
 
-      - name: Type-check and build
-        run: npm run build
+      - name: Type-check
+        run: npx --no-install astro check
+        working-directory: ${{ env.BUILD_PATH }}
+
+      - name: Build pull request
+        if: github.event_name == 'pull_request'
+        run: npx --no-install astro build
         working-directory: ${{ env.BUILD_PATH }}
 
       - name: Setup Pages
         if: github.event_name != 'pull_request'
+        id: pages
         uses: actions/configure-pages@v5
+
+      - name: Build for GitHub Pages
+        if: github.event_name != 'pull_request'
+        run: |
+          npx --no-install astro build \
+            --site "${{ steps.pages.outputs.origin }}" \
+            --base "${{ steps.pages.outputs.base_path }}"
+        working-directory: ${{ env.BUILD_PATH }}
 
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
