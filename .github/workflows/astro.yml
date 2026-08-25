@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -29,6 +29,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -37,20 +39,21 @@ jobs:
           cache: npm
           cache-dependency-path: ${{ env.BUILD_PATH }}/package-lock.json
 
-      # Temporary while repairing the lockfile broken by the TypeScript 7 bump.
-      # This step is removed once the regenerated lockfile is committed.
       - name: Regenerate lockfile
         if: github.event_name == 'pull_request'
         run: npm install --package-lock-only --ignore-scripts
         working-directory: ${{ env.BUILD_PATH }}
 
-      - name: Upload regenerated lockfile
+      - name: Commit repaired lockfile
         if: github.event_name == 'pull_request'
-        uses: actions/upload-artifact@v4
-        with:
-          name: repaired-package-lock
-          path: ${{ env.BUILD_PATH }}/package-lock.json
-          if-no-files-found: error
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          if ! git diff --cached --quiet; then
+            git commit -m "fix(deps): sync lockfile with TypeScript 6"
+            git push origin HEAD:${{ github.head_ref }}
+          fi
 
       - name: Install dependencies
         run: npm ci
