@@ -19,8 +19,8 @@ const projectIndex = featuredProject
 ---
 
 <BaseLayout
-	title="TajemnikTV.exe | Grzegorz Kaczmarski"
-	description="A dark personal dashboard for TajemnikTV: projects, lab notes, highlights, and public links from Grzegorz Kaczmarski."
+	title="TajemnikTV | Grzegorz Kaczmarski"
+	description="Personal site of Grzegorz Kaczmarski / TajemnikTV: game modding, profiling, rendering, developer tooling, AI experiments, psychology, and assorted technical rabbit holes."
 >
 	<div class="flex min-h-screen w-full relative">
 		<Sidebar />
@@ -47,13 +47,13 @@ const projectIndex = featuredProject
 							<p
 								class="text-xs font-bold uppercase tracking-[0.2em] text-primary/90 mb-2"
 							>
-								Project Cockpit
+								Current projects
 							</p>
-							<h2 class="text-3xl font-bold text-white">Active workbench</h2>
+							<h2 class="text-3xl font-bold text-white">Things I’m actually building</h2>
 						</div>
-						<p class="text-sm text-gray-400 max-w-xl">
-							One main lane gets the larger surface; the rest stay close as a
-							scannable project index.
+						<p class="text-sm text-gray-400 max-w-xl leading-relaxed">
+							Mostly mods, diagnostics, rendering experiments, developer tools, and
+							whatever technical problem was rude enough to become interesting.
 						</p>
 					</div>
 				</div>
@@ -66,30 +66,23 @@ const projectIndex = featuredProject
 							<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-5">
 								<div>
 									<p class="text-xs font-bold uppercase tracking-[0.18em] text-gray-500 mb-2">
-										Nearby lanes
+										More projects
 									</p>
 									<h3 class="text-xl font-bold text-white">
-										Compact project index
+										Other active experiments
 									</h3>
 								</div>
-								<p class="text-xs text-gray-500 max-w-52">
-									Small surfaces for projects that need context, not another giant
-									tile.
+								<p class="text-xs text-gray-500 max-w-56 leading-relaxed">
+									Smaller cards, because not every repository needs a monument.
 								</p>
 							</div>
 							<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 								{projectIndex.map((project) => (
 									<a
 										href={project.href}
-										target={
-											project.href?.startsWith("http") ? "_blank" : undefined
-										}
-										rel={
-											project.href?.startsWith("http") ?
-												"noopener noreferrer"
-											:	undefined
-										}
-										class="group rounded-xl border border-white/7 bg-white/4 p-4 transition-all hover:border-primary/35 hover:bg-white/7 focus-visible:bg-white/8"
+										target={project.href?.startsWith("http") ? "_blank" : undefined}
+										rel={project.href?.startsWith("http") ? "noopener noreferrer" : undefined}
+										class="group rounded-xl border border-white/7 bg-white/4 p-4 transition-all hover:-translate-y-0.5 hover:border-primary/35 hover:bg-white/7 focus-visible:bg-white/8"
 									>
 										<div class="flex items-start justify-between gap-3">
 											<div>
@@ -132,10 +125,10 @@ const projectIndex = featuredProject
 							<p
 								class="text-xs font-bold uppercase tracking-[0.2em] text-primary/90 mb-2"
 							>
-								Identity Pillars
+								Recurring interests
 							</p>
 							<h2 class="text-3xl font-bold text-white">
-								The recurring obsessions
+								Rabbit holes with suspicious persistence
 							</h2>
 						</div>
 						<a
